@@ -24,7 +24,34 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBarPrincipal = new javax.swing.JMenuBar();
+        jMenuDados = new javax.swing.JMenu();
+        jMenuItemIncluirProdutos = new javax.swing.JMenuItem();
+        jMenuItemBuscarProdutos = new javax.swing.JMenuItem();
+        jMenuItemCategorias = new javax.swing.JMenuItem();
+        jMenuItemCalcularLucro = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jMenuDados.setText("Dados");
+
+        jMenuItemIncluirProdutos.setText("Incluir Produtos");
+        jMenuItemIncluirProdutos.addActionListener(this::jMenuItemIncluirProdutosActionPerformed);
+        jMenuDados.add(jMenuItemIncluirProdutos);
+
+        jMenuItemBuscarProdutos.setText("Buscar Produtos");
+        jMenuDados.add(jMenuItemBuscarProdutos);
+
+        jMenuItemCategorias.setText("Categorias");
+        jMenuDados.add(jMenuItemCategorias);
+
+        jMenuItemCalcularLucro.setText("Calcular Margem de Lucro");
+        jMenuItemCalcularLucro.setToolTipText("");
+        jMenuDados.add(jMenuItemCalcularLucro);
+
+        jMenuBarPrincipal.add(jMenuDados);
+
+        setJMenuBar(jMenuBarPrincipal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -34,13 +61,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 274, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jMenuItemIncluirProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemIncluirProdutosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemIncluirProdutosActionPerformed
 
+    //foi necessario pesquisar qual elemento era
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar jMenuBarPrincipal;
+    private javax.swing.JMenu jMenuDados;
+    private javax.swing.JMenuItem jMenuItemBuscarProdutos;
+    private javax.swing.JMenuItem jMenuItemCalcularLucro;
+    private javax.swing.JMenuItem jMenuItemCategorias;
+    private javax.swing.JMenuItem jMenuItemIncluirProdutos;
     // End of variables declaration//GEN-END:variables
 }
