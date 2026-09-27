@@ -41,6 +41,8 @@ public class ProdutoView extends javax.swing.JFrame {
         txtMargemLucro = new javax.swing.JTextField();
         txtPrecoVenda = new javax.swing.JTextField();
         lblPrecoVenda = new javax.swing.JLabel();
+        btnSalvar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,6 +59,10 @@ public class ProdutoView extends javax.swing.JFrame {
         txtPrecoVenda.setEnabled(false);
 
         lblPrecoVenda.setText("Preço de Venda:");
+
+        btnSalvar.setText("Salvar");
+
+        btnCancelar.setText("Cancelar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,7 +86,12 @@ public class ProdutoView extends javax.swing.JFrame {
                             .addComponent(txtMargemLucro)
                             .addComponent(cmbCategoriaProduto, 0, 317, Short.MAX_VALUE)
                             .addComponent(txtPrecoCusto)
-                            .addComponent(txtNomeProduto))))
+                            .addComponent(txtNomeProduto)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCancelar)))
                 .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
@@ -106,7 +117,11 @@ public class ProdutoView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPrecoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPrecoVenda))
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSalvar)
+                    .addComponent(btnCancelar))
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -158,6 +173,8 @@ public class ProdutoView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cmbCategoriaProduto;
     private javax.swing.JLabel lblCategoriaProduto;
     private javax.swing.JLabel lblMargemLucro;
