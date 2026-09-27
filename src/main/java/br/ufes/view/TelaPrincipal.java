@@ -4,6 +4,10 @@
  */
 package br.ufes.view;
 
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+
 public class TelaPrincipal extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaPrincipal.class.getName());
@@ -71,7 +75,30 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItemIncluirProdutosActionPerformed
 
+    public JMenuBar getjMenuBarPrincipal() {
+        return jMenuBarPrincipal;
+    }
+
+    public JMenu getjMenuDados() {
+        return jMenuDados;
+    }
+
+    public JMenuItem getjMenuItemBuscarProdutos() {
+        return jMenuItemBuscarProdutos;
+    }
+
+    public JMenuItem getjMenuItemCalcularLucro() {
+        return jMenuItemCalcularLucro;
+    }
+
+    public JMenuItem getjMenuItemCategorias() {
+        return jMenuItemCategorias;
+    }
+
     //foi necessario pesquisar qual elemento era
+    public JMenuItem getjMenuItemIncluirProdutos() {
+        return jMenuItemIncluirProdutos;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBarPrincipal;
     private javax.swing.JMenu jMenuDados;
