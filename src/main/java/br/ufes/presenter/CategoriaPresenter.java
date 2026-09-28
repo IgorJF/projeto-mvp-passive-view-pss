@@ -23,6 +23,7 @@ public class CategoriaPresenter {
         view.setVisible(false);
         limparConteudoView();
         listar();
+        modoVisualizacao();
         view.getBtnSalvar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -37,7 +38,7 @@ public class CategoriaPresenter {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                    novo();
+                    modoInclusao();
                 } catch(Exception ex){
                     JOptionPane.showMessageDialog(view, "Falha: " + ex.getMessage());
                 }
@@ -54,6 +55,7 @@ public class CategoriaPresenter {
         JOptionPane.showMessageDialog(view, "Categoria: " + categoria.getNomeCategoria() + " salvo com sucesso");
         limparConteudoView();
         listar();
+        modoVisualizacao();
     }
     
     private void listar(){
@@ -67,9 +69,28 @@ public class CategoriaPresenter {
         }
     }
     
-    public void novo(){
+    public void modoInclusao(){
+        view.getLblModo().setText("Modo: Inclusao");
         view.getTxtNomeCategoria().setEnabled(true);
         view.getTxtPercentualLucro().setEnabled(true);
+        view.getBtnSalvar().setEnabled(true);
+        view.getBtnCancelar().setEnabled(true);
+        view.getBtnNovo().setEnabled(false);
+        view.getBtnEditar().setEnabled(false);
+        view.getBtnExcluir().setEnabled(false);
+        view.getBtnFechar().setEnabled(false);
+    }
+    
+    public void modoVisualizacao(){
+        view.getLblModo().setText("Modo: Visualizacao");
+        view.getTxtNomeCategoria().setEnabled(false);
+        view.getTxtPercentualLucro().setEnabled(false);
+        view.getBtnSalvar().setEnabled(false);
+        view.getBtnCancelar().setEnabled(false);
+        view.getBtnNovo().setEnabled(true);
+        view.getBtnEditar().setEnabled(true);
+        view.getBtnExcluir().setEnabled(true);
+        view.getBtnFechar().setEnabled(true);
     }
     
     private void limparConteudoView(){

@@ -68,9 +68,11 @@ public class CategoriaView extends javax.swing.JFrame {
         btnExcluir.setText("Excluir");
 
         btnSalvar.setText("Salvar");
+        btnSalvar.setEnabled(false);
         btnSalvar.addActionListener(this::btnSalvarActionPerformed);
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.setEnabled(false);
         btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
         btnFechar.setText("Fechar");
@@ -129,19 +131,18 @@ public class CategoriaView extends javax.swing.JFrame {
                         .addComponent(btnCancelar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnFechar))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(lblTituloCadastradas)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 350, Short.MAX_VALUE)
-                            .addComponent(lblModo))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblNomeCategoria)
-                                .addComponent(lblPercentualLucro))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtPercentualLucro, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
-                                .addComponent(txtNomeCategoria)))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblTituloCadastradas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 350, Short.MAX_VALUE)
+                        .addComponent(lblModo))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblNomeCategoria)
+                            .addComponent(lblPercentualLucro))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtPercentualLucro, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
+                            .addComponent(txtNomeCategoria))))
                 .addContainerGap(34, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -246,6 +247,10 @@ public class CategoriaView extends javax.swing.JFrame {
     //setEnabled()
     public JTextField getTxtPercentualLucro() {
         return txtPercentualLucro;
+    }
+
+    public void setLblModo(JLabel lblModo) {
+        this.lblModo = lblModo;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
