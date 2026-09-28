@@ -1,5 +1,6 @@
 package br.ufes.presenter;
 
+import br.ufes.repository.ICategoriaRepository;
 import br.ufes.view.CategoriaView;
 import br.ufes.view.ProdutoView;
 import br.ufes.view.TelaPrincipal;
@@ -9,8 +10,10 @@ import javax.swing.JOptionPane;
 
 public class TelaPrincipalPresenter {
     private TelaPrincipal telaPrincipal;
-    
-    public TelaPrincipalPresenter(){
+    private ICategoriaRepository categoriaRepository;
+
+    public TelaPrincipalPresenter(ICategoriaRepository categoriaRepository) {
+        this.categoriaRepository = categoriaRepository;
         telaPrincipal = new TelaPrincipal();
         configuraView();
         telaProduto();
@@ -39,7 +42,7 @@ public class TelaPrincipalPresenter {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 try{
-                    new CategoriaView().setVisible(true);
+                    new CategoriaPresenter(categoriaRepository);
                 } catch(Exception e){
                     JOptionPane.showMessageDialog(telaPrincipal, "Erro: Não foi possivel abrir a tela de categorias - " + e.getMessage());
                 }

@@ -6,4 +6,5 @@ import java.util.List;
 public interface ICategoriaRepository {
     void salvar(Categoria categoria);
     List<Categoria> listar();
+    //void novo(); - vai ser apenas mudanca de estado de elementos
 }

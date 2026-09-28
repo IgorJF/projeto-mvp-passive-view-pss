@@ -9,6 +9,6 @@ public class ProjetoMVP {
     public static void main(String[] args) {
         ICategoriaRepository categorias = new CategoriaRepository();
         Seeder seeder = new Seeder(categorias);
-        TelaPrincipalPresenter telaPrincipal = new TelaPrincipalPresenter();
+        TelaPrincipalPresenter telaPrincipal = new TelaPrincipalPresenter(categorias);
     }
 }

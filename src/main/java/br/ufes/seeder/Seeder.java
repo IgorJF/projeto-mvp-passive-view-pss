@@ -3,10 +3,6 @@ package br.ufes.seeder;
 import br.ufes.model.Categoria;
 import br.ufes.repository.ICategoriaRepository;
 import br.ufes.repository.IProdutoRepository;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 public class Seeder {
     public Seeder(ICategoriaRepository categorias){

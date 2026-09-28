@@ -33,11 +33,17 @@ public class CategoriaPresenter {
                 }
             }
         });
+        view.getBtnNovo().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    novo();
+                } catch(Exception ex){
+                    JOptionPane.showMessageDialog(view, "Falha: " + ex.getMessage());
+                }
+            }
+        });
         view.setVisible(true);
-    }
-    
-    private void fechar(){
-        view.dispose();
     }
     
     private void salvar(){
@@ -59,6 +65,11 @@ public class CategoriaPresenter {
                 categoria.getPercentualLucro()
             });
         }
+    }
+    
+    public void novo(){
+        view.getTxtNomeCategoria().setEnabled(true);
+        view.getTxtPercentualLucro().setEnabled(true);
     }
     
     private void limparConteudoView(){
