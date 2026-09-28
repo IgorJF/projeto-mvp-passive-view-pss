@@ -1,30 +1,23 @@
 package br.ufes.seeder;
 
-import br.ufes.bancodedados.Conexao;
+import br.ufes.model.Categoria;
+import br.ufes.repository.ICategoriaRepository;
+import br.ufes.repository.IProdutoRepository;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Seeder {
-    public void executar() {
-        String sqlCategoria = "SELECT * FROM categoria";
+    public Seeder(ICategoriaRepository categorias){
+        criarCategoriasIniciais(categorias);
+    }
+    
+    private void criarCategoriasIniciais(ICategoriaRepository categorias){
+        Categoria bebidas = new Categoria("Bebidas", 5.0);
+        Categoria alimentos = new Categoria("Alimentos", 10.0);
 
-        try (Connection conn = Conexao.conectar();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sqlCategoria)) {
-
-            while (rs.next()) {
-
-                int id = rs.getInt("id");
-                String nome = rs.getString("nome");
-                double percentualDesconto = rs.getDouble("percentualDesconto");
-
-                System.out.println(id + " - " + nome + " - "
-                        + percentualDesconto);
-            }
-        } catch (SQLException e) {
-            System.out.println("Falha: " + e.getMessage());
-        }
+        categorias.salvar(bebidas);
+        categorias.salvar(alimentos);
     }
 }

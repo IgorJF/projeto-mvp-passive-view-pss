@@ -1,5 +1,6 @@
 package br.ufes.presenter;
 
+import br.ufes.view.CategoriaView;
 import br.ufes.view.ProdutoView;
 import br.ufes.view.TelaPrincipal;
 import java.awt.event.ActionEvent;
@@ -13,6 +14,7 @@ public class TelaPrincipalPresenter {
         telaPrincipal = new TelaPrincipal();
         configuraView();
         telaProduto();
+        telaCategoria();
     }
     
     private void configuraView() {
@@ -27,6 +29,19 @@ public class TelaPrincipalPresenter {
                     new ProdutoView().setVisible(true);
                 } catch(Exception e){
                     JOptionPane.showMessageDialog(telaPrincipal, "Erro: Não foi possivel abrir a tela de incluir produtos - " + e.getMessage());
+                }
+            }
+        });          
+    }
+    
+    private void telaCategoria(){
+        telaPrincipal.getjMenuItemCategorias().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                try{
+                    new CategoriaView().setVisible(true);
+                } catch(Exception e){
+                    JOptionPane.showMessageDialog(telaPrincipal, "Erro: Não foi possivel abrir a tela de categorias - " + e.getMessage());
                 }
             }
         });          

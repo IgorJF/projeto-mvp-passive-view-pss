@@ -1,13 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package br.ufes.repository;
 
-/**
- *
- * @author igor
- */
-public class CategoriaRepository {
+import br.ufes.model.Categoria;
+import java.util.ArrayList;
+import java.util.List;
+
+public class CategoriaRepository implements ICategoriaRepository {
+    private List<Categoria> categorias;
     
+    public CategoriaRepository(){
+        categorias = new ArrayList<>();
+    }
+    
+    @Override
+    public void salvar(Categoria categoria){
+        if(categoria == null){
+            throw new IllegalArgumentException("Informa uma categoria valida");
+        }
+        categorias.add(categoria);
+    }
+    
+    @Override
+    public List<Categoria> listar(){
+        return categorias;
+    }
 }
