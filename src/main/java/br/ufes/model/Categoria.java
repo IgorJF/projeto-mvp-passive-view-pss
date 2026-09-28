@@ -3,9 +3,9 @@ package br.ufes.model;
 public class Categoria {
     private int id;
     private String nomeCategoria;
-    private String percentualLucro;
+    private double percentualLucro;
     
-    public Categoria(String nomeCategoria, String percentualLucro){
+    public Categoria(String nomeCategoria, double percentualLucro){
         this.nomeCategoria = nomeCategoria;
         this.percentualLucro = percentualLucro;
     }
