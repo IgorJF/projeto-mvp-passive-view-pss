@@ -23,7 +23,7 @@ public class ProdutoHistoricoPresenter {
     
     private void configuraView(){
         view.setVisible(false);
-        
+    
         view.setVisible(true);
     }
 }
