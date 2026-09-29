@@ -4,6 +4,10 @@
  */
 package br.ufes.view;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+
 /**
  *
  * @author ana-luiza
@@ -28,47 +32,186 @@ public class ProdutoVisualizacaoView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtNomeProduto = new javax.swing.JLabel();
+        lblNomeProduto = new javax.swing.JTextField();
+        txtPrecoCusto = new javax.swing.JLabel();
+        lblPrecoCusto = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtMargemLucro = new javax.swing.JLabel();
+        lblMargemLucro = new javax.swing.JTextField();
+        txtPrecoVenda = new javax.swing.JLabel();
+        lblPrecoVenda = new javax.swing.JTextField();
+        cbCategoria = new javax.swing.JComboBox<>();
+        btnHistorico = new javax.swing.JButton();
+        btnFechar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        txtDadosProduto = new javax.swing.JLabel();
+        txtModo = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        txtNomeProduto.setText("Nome do produto");
+
+        lblNomeProduto.setEditable(false);
+
+        txtPrecoCusto.setText("Preço de custo:");
+
+        lblPrecoCusto.setEditable(false);
+
+        jLabel3.setText("Categoria do produto:");
+
+        txtMargemLucro.setText("Margem de lurcro (%):");
+
+        lblMargemLucro.setEditable(false);
+
+        txtPrecoVenda.setText("Preço de venda:");
+
+        lblPrecoVenda.setEditable(false);
+
+        cbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbCategoria.setEnabled(false);
+
+        btnHistorico.setText("Visualizar histórico de precos");
+
+        btnFechar.setText("Fechar");
+
+        btnEditar.setText("Editar");
+
+        txtDadosProduto.setText("Dados do Produto");
+
+        txtModo.setText("Modo: Visualização");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtNomeProduto)
+                                            .addComponent(txtPrecoCusto))
+                                        .addGap(34, 34, 34)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblPrecoCusto, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lblNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnHistorico, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtMargemLucro)
+                                            .addComponent(txtPrecoVenda))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblPrecoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lblMargemLucro, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtDadosProduto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 291, Short.MAX_VALUE)
+                                .addComponent(txtModo))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEditar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnFechar)))
+                .addGap(27, 27, 27))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDadosProduto)
+                    .addComponent(txtModo))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNomeProduto)
+                    .addComponent(lblNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPrecoCusto)
+                    .addComponent(lblPrecoCusto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(cbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtMargemLucro)
+                    .addComponent(lblMargemLucro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPrecoVenda)
+                    .addComponent(lblPrecoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnHistorico)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnFechar)
+                    .addComponent(btnEditar))
+                .addGap(17, 17, 17))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new ProdutoVisualizacaoView().setVisible(true));
+    public JButton getBtnEditar() {
+        return btnEditar;
     }
 
+    public JButton getBtnFechar() {
+        return btnFechar;
+    }
+
+    public JButton getBtnHistorico() {
+        return btnHistorico;
+    }
+
+    public JComboBox<String> getCbCategoria() {
+        return cbCategoria;
+    }
+
+    public JLabel getTxtMargemLucro() {
+        return txtMargemLucro;
+    }
+
+    public JLabel getTxtNomeProduto() {
+        return txtNomeProduto;
+    }
+
+    public JLabel getTxtPrecoCusto() {
+        return txtPrecoCusto;
+    }
+
+    public JLabel getTxtPrecoVenda() {
+        return txtPrecoVenda;
+    }
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnFechar;
+    private javax.swing.JButton btnHistorico;
+    private javax.swing.JComboBox<String> cbCategoria;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField lblMargemLucro;
+    private javax.swing.JTextField lblNomeProduto;
+    private javax.swing.JTextField lblPrecoCusto;
+    private javax.swing.JTextField lblPrecoVenda;
+    private javax.swing.JLabel txtDadosProduto;
+    private javax.swing.JLabel txtMargemLucro;
+    private javax.swing.JLabel txtModo;
+    private javax.swing.JLabel txtNomeProduto;
+    private javax.swing.JLabel txtPrecoCusto;
+    private javax.swing.JLabel txtPrecoVenda;
     // End of variables declaration//GEN-END:variables
 }
