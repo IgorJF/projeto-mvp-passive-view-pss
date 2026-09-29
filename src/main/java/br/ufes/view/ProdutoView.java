@@ -4,6 +4,8 @@
  */
 package br.ufes.view;
 
+import br.ufes.model.Categoria;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
@@ -52,10 +54,14 @@ public class ProdutoView extends javax.swing.JFrame {
 
         lblCategoriaProduto.setText("Categoria do Produto:");
 
+        cmbCategoriaProduto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
         lblMargemLucro.setText("Margem de Lucro (%):");
 
+        txtMargemLucro.setEditable(false);
         txtMargemLucro.setEnabled(false);
 
+        txtPrecoVenda.setEditable(false);
         txtPrecoVenda.setEnabled(false);
 
         lblPrecoVenda.setText("Preço de Venda:");
@@ -131,7 +137,7 @@ public class ProdutoView extends javax.swing.JFrame {
      * @param args the command line arguments
      */
 
-    public JComboBox<String> getCmbCategoriaProduto() {
+    public JComboBox<Categoria> getCmbCategoriaProduto() {
         return cmbCategoriaProduto;
     }
 
@@ -151,10 +157,18 @@ public class ProdutoView extends javax.swing.JFrame {
         return txtPrecoVenda;
     }
 
+    public JButton getBtnCancelar() {
+        return btnCancelar;
+    }
+
+    public JButton getBtnSalvar() {
+        return btnSalvar;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JComboBox<String> cmbCategoriaProduto;
+    private javax.swing.JComboBox<Categoria> cmbCategoriaProduto;
     private javax.swing.JLabel lblCategoriaProduto;
     private javax.swing.JLabel lblMargemLucro;
     private javax.swing.JLabel lblNomeProduto;

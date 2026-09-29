@@ -1,6 +1,7 @@
 package br.ufes.presenter;
 
 import br.ufes.repository.ICategoriaRepository;
+import br.ufes.repository.IProdutoRepository;
 import br.ufes.view.CategoriaView;
 import br.ufes.view.ProdutoView;
 import br.ufes.view.TelaPrincipal;
@@ -11,9 +12,11 @@ import javax.swing.JOptionPane;
 public class TelaPrincipalPresenter {
     private TelaPrincipal telaPrincipal;
     private ICategoriaRepository categoriaRepository;
+    private IProdutoRepository produtoRepository;
 
-    public TelaPrincipalPresenter(ICategoriaRepository categoriaRepository) {
+    public TelaPrincipalPresenter(ICategoriaRepository categoriaRepository, IProdutoRepository produtoRepository) {
         this.categoriaRepository = categoriaRepository;
+        this.produtoRepository = produtoRepository;
         telaPrincipal = new TelaPrincipal();
         configuraView();
         telaProduto();
@@ -29,7 +32,7 @@ public class TelaPrincipalPresenter {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 try{
-                    new ProdutoView().setVisible(true);
+                    new ProdutoPresenter(produtoRepository, categoriaRepository);
                 } catch(Exception e){
                     JOptionPane.showMessageDialog(telaPrincipal, "Erro: Não foi possivel abrir a tela de incluir produtos - " + e.getMessage());
                 }

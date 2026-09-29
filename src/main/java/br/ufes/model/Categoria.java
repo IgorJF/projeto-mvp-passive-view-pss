@@ -39,4 +39,9 @@ public class Categoria {
     public void setPercentualLucro(double percentualLucro) {
         this.percentualLucro = percentualLucro;
     }
+    
+    @Override
+    public String toString(){
+        return nomeCategoria;
+    }
 }

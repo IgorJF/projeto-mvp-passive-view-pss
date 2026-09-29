@@ -10,9 +10,11 @@ import java.util.List;
  */
 public class ProdutoRepository implements IProdutoRepository {
     private List<Produto> produtos;
+    private int idContador;
     
     public ProdutoRepository(){
         produtos = new ArrayList<>();
+        idContador = 1;
     }
     
     @Override
@@ -20,33 +22,28 @@ public class ProdutoRepository implements IProdutoRepository {
         if(produto == null){
             throw new IllegalArgumentException("Produto não é valido");
         }
-        produtos.add(produto);
+        if (produto.getId() == 0) {
+            existe(produto.getNomeProduto());
+            produto.setId(idContador++);
+            produtos.add(produto);
+        }
+        for (int i = 0; i < produtos.size(); i++) {
+            if (produtos.get(i).getId() == produto.getId()) {
+                produtos.set(i, produto);
+            }
+        }
     }
     
     @Override
     public List<Produto> listar() {
         return produtos;
     }
-    @Override
-    public Produto buscarProdutoId(int idProduto) {
-        for(Produto p : produtos){
-            if(p.getId() == idProduto){
-                return p;
+    
+    private void existe(String nomeProduto){
+         for(Produto produto : produtos){
+            if(produto.getNomeProduto().equalsIgnoreCase(nomeProduto)){
+                throw new RuntimeException("O produto com nome de " + nomeProduto + " ja existe");
             }
         }
-        return null;
     }
-    /*
-    @Override
-    public void atualizar(Produto produto) {
-        for(Produto p : produtos){
-            if (p.getId()== p.getId()) {
-                p.setNomeProduto(produto.getNomeProduto());
-                p.setPrecoCusto(produto.getPrecoCusto());
-                p.setCategoria(produto.getCategoria());
-            }
-            throw new IllegalArgumentException("Produto não encontrado");
-        }
-    }
-    */
 }
