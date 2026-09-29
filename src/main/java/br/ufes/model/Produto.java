@@ -5,6 +5,8 @@ public class Produto {
     private String nomeProduto;
     private double precoCusto;
     private Categoria categoria;
+    private double margemLucro;
+    private double precoVenda;
     
     public Produto(String nomeProduto, double precoCusto, Categoria categoria){
         this.nomeProduto = nomeProduto;
@@ -38,6 +40,22 @@ public class Produto {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+    
+    public double getMargemLucro() {
+        return margemLucro;
+    }
+
+    public void setMargemLucro(double margemLucro) {
+        this.margemLucro = margemLucro;
+    }
+
+    public double getPrecoVenda() {
+        return precoVenda;
+    }
+
+    public void setPrecoVenda(double precoVenda) {
+        this.precoVenda = precoVenda;
     }
 }
 

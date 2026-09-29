@@ -19,6 +19,10 @@ public class Categoria {
     public int getId() {
         return id;
     }
+    
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNomeCategoria() {
         return nomeCategoria;
@@ -26,5 +30,13 @@ public class Categoria {
 
     public double getPercentualLucro() {
         return percentualLucro;
+    }
+
+    public void setNomeCategoria(String nomeCategoria) {
+        this.nomeCategoria = nomeCategoria;
+    }
+
+    public void setPercentualLucro(double percentualLucro) {
+        this.percentualLucro = percentualLucro;
     }
 }

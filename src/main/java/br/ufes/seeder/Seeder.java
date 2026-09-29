@@ -2,7 +2,6 @@ package br.ufes.seeder;
 
 import br.ufes.model.Categoria;
 import br.ufes.repository.ICategoriaRepository;
-import br.ufes.repository.IProdutoRepository;
 
 public class Seeder {
     public Seeder(ICategoriaRepository categorias){

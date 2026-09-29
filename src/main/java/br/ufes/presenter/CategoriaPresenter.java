@@ -44,6 +44,16 @@ public class CategoriaPresenter {
                 }
             }
         });
+        view.getBtnEditar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    editar();
+                } catch(Exception ex){
+                    JOptionPane.showMessageDialog(view, "Falha: " + ex.getMessage());
+                }
+            }
+        });
         view.setVisible(true);
     }
     
@@ -51,7 +61,16 @@ public class CategoriaPresenter {
         String nomeCategoria = view.getTxtNomeCategoria().getText(); 
         double percentualLucro = Double.parseDouble(view.getTxtPercentualLucro().getText());
         this.categoria = new Categoria(nomeCategoria, percentualLucro);
-        repository.salvar(categoria);
+        int linha = view.getTblCategoriasCadastradas().getSelectedRow();
+        if (linha == -1) {
+            repository.salvar(categoria);
+        } 
+        else {
+            categoria = repository.listar().get(linha);
+            categoria.setNomeCategoria(nomeCategoria);
+            categoria.setPercentualLucro(percentualLucro);
+            repository.salvar(categoria);
+        }
         JOptionPane.showMessageDialog(view, "Categoria: " + categoria.getNomeCategoria() + " salvo com sucesso");
         limparConteudoView();
         listar();
@@ -67,6 +86,17 @@ public class CategoriaPresenter {
                 categoria.getPercentualLucro()
             });
         }
+    }
+    
+    private void editar(){
+        int linha = view.getTblCategoriasCadastradas().getSelectedRow(); 
+        if (linha == -1) {
+            JOptionPane.showMessageDialog(view, "Selecione uma categoria para editar");
+        }
+        Categoria categoria = repository.listar().get(linha);
+        view.getTxtNomeCategoria().setText(categoria.getNomeCategoria());
+        view.getTxtPercentualLucro().setText(String.valueOf(categoria.getPercentualLucro()));
+        modoInclusao();
     }
     
     public void modoInclusao(){

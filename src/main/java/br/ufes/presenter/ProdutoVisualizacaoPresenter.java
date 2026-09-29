@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package br.ufes.presenter;
 
 import br.ufes.model.Produto;
@@ -69,11 +65,11 @@ public class ProdutoVisualizacaoPresenter {
             view.getTxtPrecoCusto().setText(String.format("%.2f", produto.getPrecoCusto()));
             
             if(produto.getCategoria() != null){
-                view.getCbCategoria().setSelectedItem(produto.getCategoria().getNome());
+                view.getCbCategoria().setSelectedItem(produto.getCategoria().getNomeCategoria());
             }
             
-            view.getTxtMargemLucro().setText(String.format("%.2f%%", produto.getMargemLucroAtual()));
-            view.getTxtPrecoVenda().setText(String.format("%.2f", produto.getPrecovendaAtual()));
+            view.getTxtMargemLucro().setText(String.format("%.2f%%", produto.getMargemLucro()));
+            view.getTxtPrecoVenda().setText(String.format("%.2f", produto.getPrecoVenda()));
         }
     }
     
