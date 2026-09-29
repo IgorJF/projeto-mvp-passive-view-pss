@@ -7,6 +7,7 @@ package br.ufes.view;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -32,41 +33,41 @@ public class ProdutoVisualizacaoView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtNomeProduto = new javax.swing.JLabel();
-        lblNomeProduto = new javax.swing.JTextField();
-        txtPrecoCusto = new javax.swing.JLabel();
-        lblPrecoCusto = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtMargemLucro = new javax.swing.JLabel();
-        lblMargemLucro = new javax.swing.JTextField();
-        txtPrecoVenda = new javax.swing.JLabel();
-        lblPrecoVenda = new javax.swing.JTextField();
+        lblNomeProduto = new javax.swing.JLabel();
+        txtNomeProduto = new javax.swing.JTextField();
+        lblPrecoCusto = new javax.swing.JLabel();
+        txtPrecoCusto = new javax.swing.JTextField();
+        lblCategoria = new javax.swing.JLabel();
+        lblMargemLucro = new javax.swing.JLabel();
+        txtMargemLucro = new javax.swing.JTextField();
+        lblPrecoVenda = new javax.swing.JLabel();
+        txtPrecoVenda = new javax.swing.JTextField();
         cbCategoria = new javax.swing.JComboBox<>();
         btnHistorico = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
-        txtDadosProduto = new javax.swing.JLabel();
-        txtModo = new javax.swing.JLabel();
+        lblDadosProduto = new javax.swing.JLabel();
+        lblModo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        txtNomeProduto.setText("Nome do produto");
+        lblNomeProduto.setText("Nome do produto");
 
-        lblNomeProduto.setEditable(false);
+        txtNomeProduto.setEditable(false);
 
-        txtPrecoCusto.setText("Preço de custo:");
+        lblPrecoCusto.setText("Preço de custo:");
 
-        lblPrecoCusto.setEditable(false);
+        txtPrecoCusto.setEditable(false);
 
-        jLabel3.setText("Categoria do produto:");
+        lblCategoria.setText("Categoria do produto:");
 
-        txtMargemLucro.setText("Margem de lurcro (%):");
+        lblMargemLucro.setText("Margem de lurcro (%):");
 
-        lblMargemLucro.setEditable(false);
+        txtMargemLucro.setEditable(false);
 
-        txtPrecoVenda.setText("Preço de venda:");
+        lblPrecoVenda.setText("Preço de venda:");
 
-        lblPrecoVenda.setEditable(false);
+        txtPrecoVenda.setEditable(false);
 
         cbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbCategoria.setEnabled(false);
@@ -77,9 +78,9 @@ public class ProdutoVisualizacaoView extends javax.swing.JFrame {
 
         btnEditar.setText("Editar");
 
-        txtDadosProduto.setText("Dados do Produto");
+        lblDadosProduto.setText("Dados do Produto");
 
-        txtModo.setText("Modo: Visualização");
+        lblModo.setText("Modo: Visualização");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,29 +96,29 @@ public class ProdutoVisualizacaoView extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtNomeProduto)
-                                            .addComponent(txtPrecoCusto))
+                                            .addComponent(lblNomeProduto)
+                                            .addComponent(lblPrecoCusto))
                                         .addGap(34, 34, 34)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblPrecoCusto, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lblNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(txtPrecoCusto, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
+                                        .addComponent(lblCategoria)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(cbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(btnHistorico, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtMargemLucro)
-                                            .addComponent(txtPrecoVenda))
+                                            .addComponent(lblMargemLucro)
+                                            .addComponent(lblPrecoVenda))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblPrecoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lblMargemLucro, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addComponent(txtPrecoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtMargemLucro, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtDadosProduto)
+                                .addComponent(lblDadosProduto)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 291, Short.MAX_VALUE)
-                                .addComponent(txtModo))))
+                                .addComponent(lblModo))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnEditar)
@@ -130,28 +131,28 @@ public class ProdutoVisualizacaoView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDadosProduto)
-                    .addComponent(txtModo))
+                    .addComponent(lblDadosProduto)
+                    .addComponent(lblModo))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNomeProduto)
-                    .addComponent(lblNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblNomeProduto)
+                    .addComponent(txtNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPrecoCusto)
-                    .addComponent(lblPrecoCusto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblPrecoCusto)
+                    .addComponent(txtPrecoCusto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(lblCategoria)
                     .addComponent(cbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtMargemLucro)
-                    .addComponent(lblMargemLucro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblMargemLucro)
+                    .addComponent(txtMargemLucro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPrecoVenda)
-                    .addComponent(lblPrecoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblPrecoVenda)
+                    .addComponent(txtPrecoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnHistorico)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
@@ -180,21 +181,22 @@ public class ProdutoVisualizacaoView extends javax.swing.JFrame {
         return cbCategoria;
     }
 
-    public JLabel getTxtMargemLucro() {
+    public JTextField getTxtMargemLucro() {
         return txtMargemLucro;
     }
 
-    public JLabel getTxtNomeProduto() {
+    public JTextField getTxtNomeProduto() {
         return txtNomeProduto;
     }
 
-    public JLabel getTxtPrecoCusto() {
+    public JTextField getTxtPrecoCusto() {
         return txtPrecoCusto;
     }
 
-    public JLabel getTxtPrecoVenda() {
+    public JTextField getTxtPrecoVenda() {
         return txtPrecoVenda;
     }
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -202,16 +204,16 @@ public class ProdutoVisualizacaoView extends javax.swing.JFrame {
     private javax.swing.JButton btnFechar;
     private javax.swing.JButton btnHistorico;
     private javax.swing.JComboBox<String> cbCategoria;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField lblMargemLucro;
-    private javax.swing.JTextField lblNomeProduto;
-    private javax.swing.JTextField lblPrecoCusto;
-    private javax.swing.JTextField lblPrecoVenda;
-    private javax.swing.JLabel txtDadosProduto;
-    private javax.swing.JLabel txtMargemLucro;
-    private javax.swing.JLabel txtModo;
-    private javax.swing.JLabel txtNomeProduto;
-    private javax.swing.JLabel txtPrecoCusto;
-    private javax.swing.JLabel txtPrecoVenda;
+    private javax.swing.JLabel lblCategoria;
+    private javax.swing.JLabel lblDadosProduto;
+    private javax.swing.JLabel lblMargemLucro;
+    private javax.swing.JLabel lblModo;
+    private javax.swing.JLabel lblNomeProduto;
+    private javax.swing.JLabel lblPrecoCusto;
+    private javax.swing.JLabel lblPrecoVenda;
+    private javax.swing.JTextField txtMargemLucro;
+    private javax.swing.JTextField txtNomeProduto;
+    private javax.swing.JTextField txtPrecoCusto;
+    private javax.swing.JTextField txtPrecoVenda;
     // End of variables declaration//GEN-END:variables
 }

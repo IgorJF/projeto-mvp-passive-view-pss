@@ -62,9 +62,9 @@
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="txtDadosProduto" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblDadosProduto" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="291" max="32767" attributes="0"/>
-                              <Component id="txtModo" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblModo" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -84,8 +84,8 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtDadosProduto" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtModo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblDadosProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblModo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -201,12 +201,12 @@
         <Property name="text" type="java.lang.String" value="Editar"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="txtDadosProduto">
+    <Component class="javax.swing.JLabel" name="lblDadosProduto">
       <Properties>
         <Property name="text" type="java.lang.String" value="Dados do Produto"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="txtModo">
+    <Component class="javax.swing.JLabel" name="lblModo">
       <Properties>
         <Property name="text" type="java.lang.String" value="Modo: Visualiza&#xe7;&#xe3;o"/>
       </Properties>
