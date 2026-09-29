@@ -8,10 +8,12 @@ public class Produto {
     private double margemLucro;
     private double precoVenda;
     
-    public Produto(String nomeProduto, double precoCusto, Categoria categoria){
+    public Produto(String nomeProduto, double precoCusto, Categoria categoria, double margemLucro, double precoVenda){
         this.nomeProduto = nomeProduto;
         this.precoCusto = precoCusto;
         this.categoria = categoria;
+        this.margemLucro = margemLucro;
+        this.precoVenda = precoVenda;
     }
 
     public int getId() {

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.model.service;
+package br.ufes.service;
 
 import br.ufes.model.Categoria;
 import br.ufes.model.HistoricoPreco;
@@ -18,16 +18,11 @@ import java.time.LocalDate;
  * @author Daniel
  */
 public class CalculoPrecoService {
-
     private IProdutoRepository produtoRepository;
     private ICategoriaRepository categoriaRepository;
     private IHistoricoPrecoRepository historicoPrecoRepository;
 
-    public CalculoPrecoService(
-            IProdutoRepository produtoRepository,
-            ICategoriaRepository categoriaRepository,
-            IHistoricoPrecoRepository historicoPrecoRepository) {
-
+    public CalculoPrecoService(IProdutoRepository produtoRepository, ICategoriaRepository categoriaRepository, IHistoricoPrecoRepository historicoPrecoRepository) {
         this.produtoRepository = produtoRepository;
         this.categoriaRepository = categoriaRepository;
         this.historicoPrecoRepository = historicoPrecoRepository;
@@ -40,12 +35,9 @@ public class CalculoPrecoService {
             double percentualLucro = categoria.getPercentualLucro();
             double precoCustoProduto = p.getPrecoCusto();
             double precoVenda = precoCustoProduto * (1 + percentualLucro/100);
-            
             p.setPrecoVenda(precoVenda);
             p.setMargemLucro(percentualLucro);
-            
             HistoricoPreco historico = new HistoricoPreco(p, LocalDate.now(), percentualLucro, precoVenda);
-            
             historicoPrecoRepository.salvar(historico);
         }
     }

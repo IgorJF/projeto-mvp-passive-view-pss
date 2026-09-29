@@ -4,6 +4,7 @@ import br.ufes.model.Categoria;
 import br.ufes.model.Produto;
 import br.ufes.repository.CategoriaRepository;
 import br.ufes.repository.ICategoriaRepository;
+import br.ufes.repository.IHistoricoPrecoRepository;
 import br.ufes.repository.IProdutoRepository;
 import br.ufes.view.ProdutoView;
 import java.awt.event.ActionEvent;
@@ -16,6 +17,7 @@ public class ProdutoPresenter {
     private Produto produto;
     private IProdutoRepository repositoryProduto;
     private ICategoriaRepository repositoryCategoria;
+    private IHistoricoPrecoRepository repositoryHistorico;
     
      public ProdutoPresenter(IProdutoRepository repositoryProduto, ICategoriaRepository repositoryCategoria){
         this.repositoryProduto = repositoryProduto;
@@ -28,12 +30,19 @@ public class ProdutoPresenter {
         view.setVisible(false);
         listarCategorias();
         limparConteudoView();
+        view.getCmbCategoriaProduto().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                selecionarCategoria();
+            }
+        });
         view.getBtnSalvar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
                     salvar();
-                } catch(Exception ex){
+                } 
+                catch(Exception ex){
                     JOptionPane.showMessageDialog(view, "Falha: " + ex.getMessage());
                 }
             }
@@ -43,7 +52,8 @@ public class ProdutoPresenter {
             public void actionPerformed(ActionEvent e) {
                 try{
                     cancelar();
-                } catch(Exception ex){
+                } 
+                catch(Exception ex){
                     JOptionPane.showMessageDialog(view, "Falha: " + ex.getMessage());
                 }
             }
@@ -54,9 +64,10 @@ public class ProdutoPresenter {
     private void salvar(){
         String nomeProduto = view.getTxtNomeProduto().getText(); 
         double precoCusto = Double.parseDouble(view.getTxtPrecoCusto().getText());
-        Categoria categoriaProduto = (Categoria)view.getCmbCategoriaProduto().getSelectedItem();
-        
-        this.produto = new Produto(nomeProduto, precoCusto, categoriaProduto);
+        Categoria categoriaProduto = categoria;
+        double margemLucro = categoria.getPercentualLucro();
+        double precoVenda = calcularPrecoVenda(precoCusto);
+        this.produto = new Produto(nomeProduto, precoCusto, categoriaProduto, margemLucro, precoVenda);
         repositoryProduto.salvar(produto);
         JOptionPane.showMessageDialog(view, "Produto: " + produto.getNomeProduto() + " salvo com sucesso");
         limparConteudoView();
@@ -68,6 +79,19 @@ public class ProdutoPresenter {
         }
     }
     
+    private Categoria selecionarCategoria(){
+        categoria = (Categoria)view.getCmbCategoriaProduto().getSelectedItem();
+        if(categoria != null){
+            view.getTxtMargemLucro().setText(String.valueOf(categoria.getPercentualLucro()));
+            view.getTxtPrecoVenda().setText(String.valueOf(calcularPrecoVenda(Double.parseDouble(view.getTxtPrecoCusto().getText()))));
+        }
+        return categoria;
+    }
+    
+    private double calcularPrecoVenda(double precoCusto){
+        return precoCusto * (1 + (categoria.getPercentualLucro()/100));
+    }
+    
     private void cancelar(){
         limparConteudoView();
     }
@@ -76,5 +100,7 @@ public class ProdutoPresenter {
         view.getTxtNomeProduto().setText("");
         view.getTxtPrecoCusto().setText("");
         view.getCmbCategoriaProduto().setSelectedIndex(-1);
+        view.getTxtMargemLucro().setText("");
+        view.getTxtPrecoVenda().setText("");
     }
 }
