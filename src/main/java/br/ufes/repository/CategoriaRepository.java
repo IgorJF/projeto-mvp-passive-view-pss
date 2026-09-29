@@ -31,6 +31,11 @@ public class CategoriaRepository implements ICategoriaRepository {
     }
     
     @Override
+    public void excluir(Categoria categoria){
+        categorias.remove(categoria);
+    }
+    
+    @Override
     public List<Categoria> listar(){
         return categorias;
     }

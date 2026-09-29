@@ -54,6 +54,36 @@ public class CategoriaPresenter {
                 }
             }
         });
+        view.getBtnExcluir().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    excluir();
+                } catch(Exception ex){
+                    JOptionPane.showMessageDialog(view, "Falha: " + ex.getMessage());
+                }
+            }
+        });
+        view.getBtnFechar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    fechar();
+                } catch(Exception ex){
+                    JOptionPane.showMessageDialog(view, "Falha: " + ex.getMessage());
+                }
+            }
+        });
+        view.getBtnCancelar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    cancelar();
+                } catch(Exception ex){
+                    JOptionPane.showMessageDialog(view, "Falha: " + ex.getMessage());
+                }
+            }
+        });
         view.setVisible(true);
     }
     
@@ -90,13 +120,27 @@ public class CategoriaPresenter {
     
     private void editar(){
         int linha = view.getTblCategoriasCadastradas().getSelectedRow(); 
-        if (linha == -1) {
-            JOptionPane.showMessageDialog(view, "Selecione uma categoria para editar");
-        }
         Categoria categoria = repository.listar().get(linha);
         view.getTxtNomeCategoria().setText(categoria.getNomeCategoria());
         view.getTxtPercentualLucro().setText(String.valueOf(categoria.getPercentualLucro()));
         modoInclusao();
+    }
+    
+    private void excluir(){
+        int linha = view.getTblCategoriasCadastradas().getSelectedRow();
+        Categoria categoria = repository.listar().get(linha);
+        repository.excluir(categoria);
+        JOptionPane.showMessageDialog(view, "Categoria: " + categoria.getNomeCategoria() + " excluida com sucesso");
+        listar();
+    }
+    
+    private void fechar(){
+        view.dispose();
+    }
+    
+    private void cancelar(){
+        limparConteudoView();
+        modoVisualizacao();
     }
     
     public void modoInclusao(){
