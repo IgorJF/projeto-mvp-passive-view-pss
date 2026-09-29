@@ -33,38 +33,38 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtNomeProduto" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtPrecoCusto" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblNomeProduto" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblPrecoCusto" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblPrecoCusto" min="-2" pref="180" max="-2" attributes="0"/>
-                                          <Component id="lblNomeProduto" min="-2" pref="363" max="-2" attributes="0"/>
+                                          <Component id="txtPrecoCusto" min="-2" pref="180" max="-2" attributes="0"/>
+                                          <Component id="txtNomeProduto" min="-2" pref="363" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblCategoria" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="cbCategoria" min="-2" pref="363" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="btnHistorico" alignment="0" min="-2" pref="264" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtMargemLucro" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txtPrecoVenda" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblMargemLucro" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblPrecoVenda" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblPrecoVenda" min="-2" pref="169" max="-2" attributes="0"/>
-                                          <Component id="lblMargemLucro" min="-2" pref="138" max="-2" attributes="0"/>
+                                          <Component id="txtPrecoVenda" min="-2" pref="169" max="-2" attributes="0"/>
+                                          <Component id="txtMargemLucro" min="-2" pref="138" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="txtDadosProduto" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblDadosProduto" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="291" max="32767" attributes="0"/>
-                              <Component id="txtModo" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblModo" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -84,33 +84,33 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtDadosProduto" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtModo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblDadosProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblModo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtNomeProduto" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblNomeProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtNomeProduto" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtPrecoCusto" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblPrecoCusto" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPrecoCusto" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblCategoria" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cbCategoria" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtMargemLucro" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblMargemLucro" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtMargemLucro" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtPrecoVenda" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblPrecoVenda" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPrecoVenda" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnHistorico" min="-2" max="-2" attributes="0"/>
@@ -125,47 +125,47 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="txtNomeProduto">
+    <Component class="javax.swing.JLabel" name="lblNomeProduto">
       <Properties>
         <Property name="text" type="java.lang.String" value="Nome do produto"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="lblNomeProduto">
+    <Component class="javax.swing.JTextField" name="txtNomeProduto">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="txtPrecoCusto">
+    <Component class="javax.swing.JLabel" name="lblPrecoCusto">
       <Properties>
         <Property name="text" type="java.lang.String" value="Pre&#xe7;o de custo:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="lblPrecoCusto">
+    <Component class="javax.swing.JTextField" name="txtPrecoCusto">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="lblCategoria">
       <Properties>
         <Property name="text" type="java.lang.String" value="Categoria do produto:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="txtMargemLucro">
+    <Component class="javax.swing.JLabel" name="lblMargemLucro">
       <Properties>
         <Property name="text" type="java.lang.String" value="Margem de lurcro (%):"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="lblMargemLucro">
+    <Component class="javax.swing.JTextField" name="txtMargemLucro">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="txtPrecoVenda">
+    <Component class="javax.swing.JLabel" name="lblPrecoVenda">
       <Properties>
         <Property name="text" type="java.lang.String" value="Pre&#xe7;o de venda:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="lblPrecoVenda">
+    <Component class="javax.swing.JTextField" name="txtPrecoVenda">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
@@ -201,12 +201,12 @@
         <Property name="text" type="java.lang.String" value="Editar"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="txtDadosProduto">
+    <Component class="javax.swing.JLabel" name="lblDadosProduto">
       <Properties>
         <Property name="text" type="java.lang.String" value="Dados do Produto"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="txtModo">
+    <Component class="javax.swing.JLabel" name="lblModo">
       <Properties>
         <Property name="text" type="java.lang.String" value="Modo: Visualiza&#xe7;&#xe3;o"/>
       </Properties>
