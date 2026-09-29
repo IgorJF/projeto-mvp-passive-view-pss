@@ -24,6 +24,7 @@ public class TelaPrincipalPresenter {
         configuraView();
         telaProduto();
         telaCategoria();
+        telaBuscaProduto();
     }
     
     private void configuraView() {
@@ -56,14 +57,14 @@ public class TelaPrincipalPresenter {
         });          
     }
     
-    private void telaBuscaroProduto(){
+    private void telaBuscaProduto(){
         telaPrincipal.getjMenuItemBuscarProdutos().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae){
                 try{
-                    new BuscaProdutoPresenter(produtoRepository);
+                    new BuscaProdutoPresenter(produtoRepository, categoriaRepository);
                 }
-                } catch(Exception e){
+                catch(Exception e){
                     JOptionPane.showMessageDialog(telaPrincipal, "Erro: Não foi possivel abrir a tela de busca de produtos - " + e.getMessage());
                 }
             }
