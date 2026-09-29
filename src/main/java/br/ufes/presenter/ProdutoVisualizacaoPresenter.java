@@ -20,7 +20,7 @@ public class ProdutoVisualizacaoPresenter {
         configuraView();
     }
     
-    public void configuraView(){
+    private void configuraView(){
         view.setVisible(false);
         carregarDados();
         
