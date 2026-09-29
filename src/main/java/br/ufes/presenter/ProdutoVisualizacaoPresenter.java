@@ -82,6 +82,10 @@ public class ProdutoVisualizacaoPresenter {
     }
     
     private void visualizarHistorico(){
-        //conecta com tela historico de precos
+        if(this.produto != null){
+            new ProdutoHistoricoPresenter(this.produto);
+        } else{
+            JOptionPane.showMessageDialog(view, "Nenhum produto selecionado para exibir o historico.");
+        }
     }
 }

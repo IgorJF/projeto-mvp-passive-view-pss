@@ -4,6 +4,7 @@
  */
 package br.ufes.presenter;
 
+import br.ufes.model.HistoricoPreco;
 import br.ufes.model.Produto;
 import br.ufes.view.ProdutoHistoricoView;
 import java.awt.event.ActionEvent;
