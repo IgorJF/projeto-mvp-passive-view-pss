@@ -23,10 +23,11 @@ public class BuscaProdutoPresenter {
     private IHistoricoPrecoRepository repositoryHistorico;
     private ProdutoVisualizacaoPresenter produtoVisualizacao;
     
-    public BuscaProdutoPresenter(IProdutoRepository repositoryProduto, ICategoriaRepository repositoryCategoria){
+    public BuscaProdutoPresenter(IProdutoRepository repositoryProduto, ICategoriaRepository repositoryCategoria, IHistoricoPrecoRepository repositoryHistorico){
         view = new BuscaProdutoView();
         this.repositoryProduto = repositoryProduto;
         this.repositoryCategoria = repositoryCategoria;
+        this.repositoryHistorico = repositoryHistorico;
         configuraView();
     }
     

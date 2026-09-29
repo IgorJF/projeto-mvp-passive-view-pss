@@ -62,7 +62,7 @@ public class TelaPrincipalPresenter {
             @Override
             public void actionPerformed(ActionEvent ae){
                 try{
-                    new BuscaProdutoPresenter(produtoRepository, categoriaRepository);
+                    new BuscaProdutoPresenter(produtoRepository, categoriaRepository, repositoryHistorico);
                 }
                 catch(Exception e){
                     JOptionPane.showMessageDialog(telaPrincipal, "Erro: Não foi possivel abrir a tela de busca de produtos - " + e.getMessage());
