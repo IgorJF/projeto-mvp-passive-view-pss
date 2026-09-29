@@ -9,6 +9,7 @@ import br.ufes.view.ProdutoHistoricoView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -39,6 +40,24 @@ public class ProdutoHistoricoPresenter {
         });
                 
         view.setVisible(true);
+    }
+    
+    private void carregarDados(){
+        if (produto != null){
+            view.getTxtNomeProduto().setText(produto.getNomeProduto());
+            
+            if(produto.getCategoria() != null){
+                view.getTxtCategoria().setText(produto.getCategoria().getNomeCategoria());
+            }
+            String[] colunas = {"Data", "Percentual de lucro (%)", "Preço de venda"};
+            DefaultTableModel tableModel = new DefaultTableModel(colunas, 0){
+                @Override
+                public boolean isCellEditable(int row, int column){
+                    return false;
+                }
+            };
+            view.getTblHistorico().setModel(tableModel);
+        }
     }
     
     private void fechar(){
