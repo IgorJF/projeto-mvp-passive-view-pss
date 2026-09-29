@@ -1,6 +1,7 @@
 package br.ufes.presenter;
 
 import br.ufes.repository.ICategoriaRepository;
+import br.ufes.repository.IHistoricoPrecoRepository;
 import br.ufes.repository.IProdutoRepository;
 import br.ufes.view.CategoriaView;
 import br.ufes.view.ProdutoView;
@@ -13,10 +14,12 @@ public class TelaPrincipalPresenter {
     private TelaPrincipal telaPrincipal;
     private ICategoriaRepository categoriaRepository;
     private IProdutoRepository produtoRepository;
+    private IHistoricoPrecoRepository repositoryHistorico;
 
-    public TelaPrincipalPresenter(ICategoriaRepository categoriaRepository, IProdutoRepository produtoRepository) {
+    public TelaPrincipalPresenter(ICategoriaRepository categoriaRepository, IProdutoRepository produtoRepository, IHistoricoPrecoRepository repositoryHistorico) {
         this.categoriaRepository = categoriaRepository;
         this.produtoRepository = produtoRepository;
+         this.repositoryHistorico = repositoryHistorico;
         telaPrincipal = new TelaPrincipal();
         configuraView();
         telaProduto();

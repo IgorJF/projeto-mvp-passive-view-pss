@@ -16,7 +16,7 @@ public class HistoricoPrecoRepository implements IHistoricoPrecoRepository {
     public void salvar(HistoricoPreco historico) {
         historicos.add(historico);
     }
-
+    
     @Override
     public List<HistoricoPreco> listarPorProduto(Produto produto){
         List<HistoricoPreco> historicosDoProduto = new ArrayList<>();

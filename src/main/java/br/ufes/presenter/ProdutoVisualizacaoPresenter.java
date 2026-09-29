@@ -1,6 +1,7 @@
 package br.ufes.presenter;
 
 import br.ufes.model.Produto;
+import br.ufes.repository.IHistoricoPrecoRepository;
 import br.ufes.view.ProdutoVisualizacaoView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,19 +14,21 @@ import javax.swing.JOptionPane;
 public class ProdutoVisualizacaoPresenter {
     private ProdutoVisualizacaoView view;
     private Produto produto;
-    
-    public ProdutoVisualizacaoPresenter(Produto produto){
+    private IHistoricoPrecoRepository repositoryHistorico;
+
+    public ProdutoVisualizacaoPresenter(Produto produto, IHistoricoPrecoRepository repositoryHistorico) {
         this.produto = produto;
+        this.repositoryHistorico = repositoryHistorico;
         this.view = new ProdutoVisualizacaoView();
         configuraView();
     }
-    
-    private void configuraView(){
+
+    private void configuraView() {
         view.setVisible(false);
         carregarDados();
-        view.getBtnFechar().addActionListener(new ActionListener(){
+        view.getBtnFechar().addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e){
+            public void actionPerformed(ActionEvent e) {
                 try {
                     fechar();
                 } catch (Exception ex) {
@@ -33,9 +36,9 @@ public class ProdutoVisualizacaoPresenter {
                 }
             }
         });
-        view.getBtnEditar().addActionListener(new ActionListener(){
+        view.getBtnEditar().addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e){
+            public void actionPerformed(ActionEvent e) {
                 try {
                     editar();
                 } catch (Exception ex) {
@@ -43,10 +46,10 @@ public class ProdutoVisualizacaoPresenter {
                 }
             }
         });
-        
-        view.getBtnHistorico().addActionListener(new ActionListener(){
+
+        view.getBtnHistorico().addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e){
+            public void actionPerformed(ActionEvent e) {
                 try {
                     visualizarHistorico();
                 } catch (Exception ex) {
@@ -56,31 +59,31 @@ public class ProdutoVisualizacaoPresenter {
         });
         view.setVisible(true);
     }
-    
-    private void carregarDados(){
-        if (produto != null){
+
+    private void carregarDados() {
+        if (produto != null) {
             view.getTxtNomeProduto().setText(produto.getNomeProduto());
             view.getTxtPrecoCusto().setText(String.format("%.2f", produto.getPrecoCusto()));
-            if(produto.getCategoria() != null){
+            if (produto.getCategoria() != null) {
                 view.getCbCategoria().setSelectedItem(produto.getCategoria().getNomeCategoria());
             }
             view.getTxtMargemLucro().setText(String.format("%.2f%%", produto.getMargemLucro()));
             view.getTxtPrecoVenda().setText(String.format("%.2f", produto.getPrecoVenda()));
         }
     }
-    
-    private void fechar(){
+
+    private void fechar() {
         view.dispose();
     }
-    
-    private void editar(){
+
+    private void editar() {
         //conecta com tela edicao
     }
-    
-    private void visualizarHistorico(){
-        if(this.produto != null){
-            new ProdutoHistoricoPresenter(this.produto);
-        } else{
+
+    private void visualizarHistorico() {
+        if (this.produto != null) {
+            new ProdutoHistoricoPresenter(this.produto, repositoryHistorico);
+        } else {
             JOptionPane.showMessageDialog(view, "Nenhum produto selecionado para exibir o historico.");
         }
     }
