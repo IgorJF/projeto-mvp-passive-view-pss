@@ -83,7 +83,7 @@ public class ProdutoPresenter {
         categoria = (Categoria)view.getCmbCategoriaProduto().getSelectedItem();
         if(categoria != null){
             view.getTxtMargemLucro().setText(String.valueOf(categoria.getPercentualLucro()));
-            view.getTxtPrecoVenda().setText(String.valueOf(calcularPrecoVenda(Double.parseDouble(view.getTxtPrecoCusto().getText()))));
+            view.getTxtPrecoVenda().setText(String.format("R$ %.2f", calcularPrecoVenda(Double.parseDouble(view.getTxtPrecoCusto().getText()))));
         }
         return categoria;
     }

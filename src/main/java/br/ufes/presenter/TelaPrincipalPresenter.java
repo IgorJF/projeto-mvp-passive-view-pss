@@ -52,4 +52,18 @@ public class TelaPrincipalPresenter {
             }
         });          
     }
+    
+    private void telaBuscaroProduto(){
+        telaPrincipal.getjMenuItemBuscarProdutos().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae){
+                try{
+                    new BuscaProdutoPresenter(produtoRepository);
+                }
+                } catch(Exception e){
+                    JOptionPane.showMessageDialog(telaPrincipal, "Erro: Não foi possivel abrir a tela de busca de produtos - " + e.getMessage());
+                }
+            }
+        });
+    }
 }

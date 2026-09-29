@@ -23,7 +23,6 @@ public class ProdutoVisualizacaoPresenter {
     public void configuraView(){
         view.setVisible(false);
         carregarDados();
-        
         view.getBtnFechar().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
@@ -34,7 +33,6 @@ public class ProdutoVisualizacaoPresenter {
                 }
             }
         });
-        
         view.getBtnEditar().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
@@ -63,11 +61,9 @@ public class ProdutoVisualizacaoPresenter {
         if (produto != null){
             view.getTxtNomeProduto().setText(produto.getNomeProduto());
             view.getTxtPrecoCusto().setText(String.format("%.2f", produto.getPrecoCusto()));
-            
             if(produto.getCategoria() != null){
                 view.getCbCategoria().setSelectedItem(produto.getCategoria().getNomeCategoria());
             }
-            
             view.getTxtMargemLucro().setText(String.format("%.2f%%", produto.getMargemLucro()));
             view.getTxtPrecoVenda().setText(String.format("%.2f", produto.getPrecoVenda()));
         }
