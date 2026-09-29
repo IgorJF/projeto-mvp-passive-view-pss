@@ -4,6 +4,7 @@ import br.ufes.model.Categoria;
 import br.ufes.model.Produto;
 import br.ufes.repository.ICategoriaRepository;
 import br.ufes.repository.IHistoricoPrecoRepository;
+import br.ufes.repository.IProdutoRepository;
 import br.ufes.view.ProdutoVisualizacaoView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,11 +19,14 @@ public class ProdutoVisualizacaoPresenter {
     private Produto produto;
     private IHistoricoPrecoRepository repositoryHistorico;
     private ICategoriaRepository repositoryCategoria;
+    private ProdutoPresenter produtoPresenter;
+    private IProdutoRepository repositoryProduto;
 
-    public ProdutoVisualizacaoPresenter(Produto produto, IHistoricoPrecoRepository repositoryHistorico, ICategoriaRepository repositoryCategoria){
+    public ProdutoVisualizacaoPresenter(Produto produto, IHistoricoPrecoRepository repositoryHistorico, ICategoriaRepository repositoryCategoria, IProdutoRepository repositoryProduto){
         this.produto = produto;
         this.repositoryHistorico = repositoryHistorico;
         this.repositoryCategoria = repositoryCategoria;
+        this.repositoryProduto = repositoryProduto;
         this.view = new ProdutoVisualizacaoView();
         configuraView();
     }
@@ -79,7 +83,10 @@ public class ProdutoVisualizacaoPresenter {
     }
 
     private void editar() {
-        //conecta com tela edicao
+        produtoPresenter = new ProdutoPresenter(repositoryProduto, repositoryCategoria, produto);
+        produtoPresenter.getView().getTxtNomeProduto().setText(produto.getNomeProduto());
+        produtoPresenter.getView().getTxtPrecoCusto().setText(String.format("%.2f", produto.getPrecoCusto()));
+        produtoPresenter.getView().getCmbCategoriaProduto().setSelectedItem(produto.getCategoria());
     }
 
     private void visualizarHistorico() {

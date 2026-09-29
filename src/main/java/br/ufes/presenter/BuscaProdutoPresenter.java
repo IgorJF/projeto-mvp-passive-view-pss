@@ -160,12 +160,12 @@ public class BuscaProdutoPresenter {
     
     private void visualizar(){
         int linha = view.getTblProdutosPesquisados().getSelectedRow();
-        Produto produto = repositoryProduto.listar().get(linha);
         if(linha == -1){
             JOptionPane.showMessageDialog(view, "Selecione uma linha");
         }
         else{
-            produtoVisualizacao = new ProdutoVisualizacaoPresenter(produto, repositoryHistorico, repositoryCategoria);
+            Produto produto = repositoryProduto.listar().get(linha);
+            produtoVisualizacao = new ProdutoVisualizacaoPresenter(produto, repositoryHistorico, repositoryCategoria, repositoryProduto);
         }
     }
 }

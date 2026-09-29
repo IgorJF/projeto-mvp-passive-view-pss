@@ -19,11 +19,23 @@ public class ProdutoPresenter {
     private ICategoriaRepository repositoryCategoria;
     private IHistoricoPrecoRepository repositoryHistorico;
     
-     public ProdutoPresenter(IProdutoRepository repositoryProduto, ICategoriaRepository repositoryCategoria){
+    public ProdutoPresenter(IProdutoRepository repositoryProduto, ICategoriaRepository repositoryCategoria){
         this.repositoryProduto = repositoryProduto;
         this.repositoryCategoria = repositoryCategoria;
         view = new ProdutoView();
         configuraView(); 
+    }
+    
+     public ProdutoPresenter(IProdutoRepository repositoryProduto, ICategoriaRepository repositoryCategoria, Produto produto){
+        this.repositoryProduto = repositoryProduto;
+        this.repositoryCategoria = repositoryCategoria;
+        this.produto = produto;
+        view = new ProdutoView();
+        configuraView(); 
+    }
+
+    public ProdutoView getView() {
+        return view;
     }
 
     private void configuraView() {
@@ -63,11 +75,26 @@ public class ProdutoPresenter {
     
     private void salvar(){
         String nomeProduto = view.getTxtNomeProduto().getText(); 
-        double precoCusto = Double.parseDouble(view.getTxtPrecoCusto().getText());
+        double precoCusto = Double.parseDouble(view.getTxtPrecoCusto().getText().replace(",", "."));
         Categoria categoriaProduto = categoria;
         double margemLucro = categoria.getPercentualLucro();
         double precoVenda = calcularPrecoVenda(precoCusto);
-        this.produto = new Produto(nomeProduto, precoCusto, categoriaProduto, margemLucro, precoVenda);
+        if(produto == null){
+            produto = new Produto(
+                nomeProduto,
+                precoCusto,
+                categoriaProduto,
+                margemLucro,
+                precoVenda
+            );
+        }
+        else{
+            produto.setNomeProduto(nomeProduto);
+            produto.setPrecoCusto(precoCusto);
+            produto.setCategoria(categoriaProduto);
+            produto.setMargemLucro(margemLucro);
+            produto.setPrecoVenda(precoVenda);
+        }
         repositoryProduto.salvar(produto);
         JOptionPane.showMessageDialog(view, "Produto: " + produto.getNomeProduto() + " salvo com sucesso");
         limparConteudoView();
@@ -83,7 +110,7 @@ public class ProdutoPresenter {
         categoria = (Categoria)view.getCmbCategoriaProduto().getSelectedItem();
         if(categoria != null){
             view.getTxtMargemLucro().setText(String.valueOf(categoria.getPercentualLucro()));
-            view.getTxtPrecoVenda().setText(String.format("R$ %.2f", calcularPrecoVenda(Double.parseDouble(view.getTxtPrecoCusto().getText()))));
+            view.getTxtPrecoVenda().setText(String.format("R$ %.2f", calcularPrecoVenda(Double.parseDouble(view.getTxtPrecoCusto().getText().replace(",", ".")))));
         }
         return categoria;
     }
