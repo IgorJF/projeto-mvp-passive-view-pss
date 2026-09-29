@@ -6,6 +6,9 @@ package br.ufes.presenter;
 
 import br.ufes.model.Produto;
 import br.ufes.view.ProdutoHistoricoView;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,7 +26,22 @@ public class ProdutoHistoricoPresenter {
     
     private void configuraView(){
         view.setVisible(false);
-    
+        
+        view.getBtnFechar().addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent e){
+               try {
+                   fechar();
+               } catch (Exception ex) {
+                   JOptionPane.showMessageDialog(view, "Falha: " + ex.getMessage());
+               }
+           }
+        });
+                
         view.setVisible(true);
+    }
+    
+    private void fechar(){
+        view.dispose();
     }
 }
