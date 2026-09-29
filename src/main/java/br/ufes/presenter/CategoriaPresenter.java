@@ -130,7 +130,7 @@ public class CategoriaPresenter {
         int linha = view.getTblCategoriasCadastradas().getSelectedRow();
         Categoria categoria = repository.listar().get(linha);
         int confirmacao = JOptionPane.showConfirmDialog(view, "Deseja realmente excluir a categoria " + categoria.getNomeCategoria(), "Confirmacao de Exclusao", JOptionPane.YES_NO_OPTION);
-         if (confirmacao == JOptionPane.YES_OPTION){
+        if (confirmacao == JOptionPane.YES_OPTION){
             repository.excluir(categoria);
             JOptionPane.showMessageDialog(view, "Categoria: " + categoria.getNomeCategoria() + " excluida com sucesso");
         } 

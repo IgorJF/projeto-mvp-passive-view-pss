@@ -1,6 +1,8 @@
 package br.ufes.presenter;
 
+import br.ufes.model.Categoria;
 import br.ufes.model.Produto;
+import br.ufes.repository.ICategoriaRepository;
 import br.ufes.repository.IHistoricoPrecoRepository;
 import br.ufes.view.ProdutoVisualizacaoView;
 import java.awt.event.ActionEvent;
@@ -15,10 +17,12 @@ public class ProdutoVisualizacaoPresenter {
     private ProdutoVisualizacaoView view;
     private Produto produto;
     private IHistoricoPrecoRepository repositoryHistorico;
+    private ICategoriaRepository repositoryCategoria;
 
-    public ProdutoVisualizacaoPresenter(Produto produto, IHistoricoPrecoRepository repositoryHistorico) {
+    public ProdutoVisualizacaoPresenter(Produto produto, IHistoricoPrecoRepository repositoryHistorico, ICategoriaRepository repositoryCategoria){
         this.produto = produto;
         this.repositoryHistorico = repositoryHistorico;
+        this.repositoryCategoria = repositoryCategoria;
         this.view = new ProdutoVisualizacaoView();
         configuraView();
     }
@@ -64,9 +68,7 @@ public class ProdutoVisualizacaoPresenter {
         if (produto != null) {
             view.getTxtNomeProduto().setText(produto.getNomeProduto());
             view.getTxtPrecoCusto().setText(String.format("%.2f", produto.getPrecoCusto()));
-            if (produto.getCategoria() != null) {
-                view.getCbCategoria().setSelectedItem(produto.getCategoria().getNomeCategoria());
-            }
+            carregarCategorias(repositoryCategoria);
             view.getTxtMargemLucro().setText(String.format("%.2f%%", produto.getMargemLucro()));
             view.getTxtPrecoVenda().setText(String.format("%.2f", produto.getPrecoVenda()));
         }
@@ -87,4 +89,13 @@ public class ProdutoVisualizacaoPresenter {
             JOptionPane.showMessageDialog(view, "Nenhum produto selecionado para exibir o historico.");
         }
     }
+    
+    private void carregarCategorias(ICategoriaRepository repositoryCategoria) {
+    for (Categoria categoria : repositoryCategoria.listar()) {
+        view.getCbCategoria().addItem(categoria.getNomeCategoria());
+    }
+    if (produto.getCategoria() != null) {
+        view.getCbCategoria().setSelectedItem(produto.getCategoria().getNomeCategoria());
+    }
+}
 }

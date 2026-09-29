@@ -2,6 +2,7 @@ package br.ufes.presenter;
 
 import br.ufes.model.Produto;
 import br.ufes.repository.ICategoriaRepository;
+import br.ufes.repository.IHistoricoPrecoRepository;
 import br.ufes.repository.IProdutoRepository;
 import br.ufes.view.BuscaProdutoView;
 import br.ufes.view.ProdutoView;
@@ -19,6 +20,8 @@ public class BuscaProdutoPresenter {
     private IProdutoRepository repositoryProduto;
     private ICategoriaRepository repositoryCategoria;
     private ProdutoPresenter produtoPresenter;
+    private IHistoricoPrecoRepository repositoryHistorico;
+    private ProdutoVisualizacaoPresenter produtoVisualizacao;
     
     public BuscaProdutoPresenter(IProdutoRepository repositoryProduto, ICategoriaRepository repositoryCategoria){
         view = new BuscaProdutoView();
@@ -58,6 +61,17 @@ public class BuscaProdutoPresenter {
             public void actionPerformed(ActionEvent e) {
                 try{
                     novo();
+                } 
+                catch(Exception ex){
+                    JOptionPane.showMessageDialog(view, "Falha: " + ex.getMessage());
+                }
+            }
+        });
+        view.getBtnVisualizar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    visualizar();
                 } 
                 catch(Exception ex){
                     JOptionPane.showMessageDialog(view, "Falha: " + ex.getMessage());
@@ -142,5 +156,16 @@ public class BuscaProdutoPresenter {
     
     private void novo(){
         produtoPresenter = new ProdutoPresenter(repositoryProduto, repositoryCategoria);
+    }
+    
+    private void visualizar(){
+        int linha = view.getTblProdutosPesquisados().getSelectedRow();
+        Produto produto = repositoryProduto.listar().get(linha);
+        if(linha == -1){
+            JOptionPane.showMessageDialog(view, "Selecione uma linha");
+        }
+        else{
+            produtoVisualizacao = new ProdutoVisualizacaoPresenter(produto, repositoryHistorico, repositoryCategoria);
+        }
     }
 }
