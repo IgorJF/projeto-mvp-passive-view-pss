@@ -10,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 /**
  *
@@ -18,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
 public class ProdutoHistoricoPresenter {
     private ProdutoHistoricoView view;
     private Produto produto;
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     
     public ProdutoHistoricoPresenter(Produto produto){
         this.produto = produto;
@@ -49,17 +52,39 @@ public class ProdutoHistoricoPresenter {
             if(produto.getCategoria() != null){
                 view.getTxtCategoria().setText(produto.getCategoria().getNomeCategoria());
             }
-            String[] colunas = {"Data", "Percentual de lucro (%)", "Preço de venda"};
-            DefaultTableModel tableModel = new DefaultTableModel(colunas, 0){
-                @Override
+            
+        }
+    }
+    
+    private void configurarTabela(){
+        DefaultTableModel tableModel = new DefaultTableModel(new String[]{"Data", "Percentual de lucro (%)", "Preço de venda"}, 0)
+        { 
+            @Override
                 public boolean isCellEditable(int row, int column){
                     return false;
                 }
             };
             view.getTblHistorico().setModel(tableModel);
-        }
     }
     
+    private void carregarHistorico(){
+        DefaultTableModel model = (DefaultTableModel) view.getTblHistorico().getModel();
+        model.setRowCount(0);
+        
+        if(produto != null && produto.getHistoricoPrecos() != null){
+            List<HistoricoPreco> historicos = produto.getHistoricoPrecos();
+            
+            for(HistoricoPreco h : historicos){
+                String dataFormatada = h.getDataAlteracao() != null ? h.getDataAlteracao().format(formatter) : "-";
+                model.addRow(new Object[]{
+                dataFormatada,
+                String.format("%.2f%%", h.getMargemLucro()),
+                String.format("%.2f", h.getPrecoVenda())
+                });
+            }
+        }
+        
+    }
     private void fechar(){
         view.dispose();
     }
