@@ -20,7 +20,6 @@ import java.util.List;
  * @author ana-luiza
  */
 public class ProdutoHistoricoPresenter {
-
     private ProdutoHistoricoView view;
     private Produto produto;
     private IHistoricoPrecoRepository repositoryHistorico;
@@ -59,7 +58,6 @@ public class ProdutoHistoricoPresenter {
             if (produto.getCategoria() != null) {
                 view.getTxtCategoria().setText(produto.getCategoria().getNomeCategoria());
             }
-
         }
     }
 

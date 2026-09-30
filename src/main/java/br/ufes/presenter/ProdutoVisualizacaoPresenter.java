@@ -83,10 +83,8 @@ public class ProdutoVisualizacaoPresenter {
     }
 
     private void editar() {
-        produtoPresenter = new ProdutoPresenter(repositoryProduto, repositoryCategoria, produto);
-        produtoPresenter.getView().getTxtNomeProduto().setText(produto.getNomeProduto());
-        produtoPresenter.getView().getTxtPrecoCusto().setText(String.format("%.2f", produto.getPrecoCusto()));
-        produtoPresenter.getView().getCmbCategoriaProduto().setSelectedItem(produto.getCategoria());
+        produtoPresenter = new ProdutoPresenter(repositoryProduto, repositoryCategoria);
+        produtoPresenter.editar(produto);
     }
 
     private void visualizarHistorico() {

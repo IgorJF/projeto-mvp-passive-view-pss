@@ -25,17 +25,16 @@ public class ProdutoPresenter {
         view = new ProdutoView();
         configuraView(); 
     }
-    
-     public ProdutoPresenter(IProdutoRepository repositoryProduto, ICategoriaRepository repositoryCategoria, Produto produto){
-        this.repositoryProduto = repositoryProduto;
-        this.repositoryCategoria = repositoryCategoria;
-        this.produto = produto;
-        view = new ProdutoView();
-        configuraView(); 
-    }
 
     public ProdutoView getView() {
         return view;
+    }
+    
+    public void editar(Produto produto) {
+        this.produto = produto;
+        view.getTxtNomeProduto().setText(produto.getNomeProduto());
+        view.getTxtPrecoCusto().setText(String.format(java.util.Locale.US, "%.2f", produto.getPrecoCusto()));
+        view.getCmbCategoriaProduto().setSelectedItem(produto.getCategoria());
     }
 
     private void configuraView() {
