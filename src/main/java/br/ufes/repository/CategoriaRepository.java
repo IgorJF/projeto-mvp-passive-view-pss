@@ -16,7 +16,7 @@ public class CategoriaRepository implements ICategoriaRepository {
     @Override
     public void salvar(Categoria categoria){
         if(categoria == null){
-            throw new IllegalArgumentException("Informa uma categoria valida");
+            throw new IllegalArgumentException("Categoria não é valida");
         }
         if (categoria.getId() == 0) {
             existe(categoria.getNomeCategoria());

@@ -2,6 +2,7 @@ package br.ufes.presenter;
 
 import br.ufes.model.Categoria;
 import br.ufes.repository.ICategoriaRepository;
+import br.ufes.service.CategoriaService;
 import br.ufes.view.CategoriaView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,9 +13,11 @@ public class CategoriaPresenter {
     private CategoriaView view;
     private Categoria categoria;
     private ICategoriaRepository repository;
+    private CategoriaService categoriaService;
     
      public CategoriaPresenter(ICategoriaRepository repository){
         this.repository = repository;
+        this.categoriaService = new CategoriaService(repository);
         view = new CategoriaView();
         configuraView(); 
     }
@@ -89,19 +92,27 @@ public class CategoriaPresenter {
     
     private void salvar(){
         String nomeCategoria = view.getTxtNomeCategoria().getText(); 
-        double percentualLucro = Double.parseDouble(view.getTxtPercentualLucro().getText());
-        this.categoria = new Categoria(nomeCategoria, percentualLucro);
+        String textoPercentual = view.getTxtPercentualLucro().getText();
+        
+        if(nomeCategoria.isBlank()){
+             throw new IllegalArgumentException("Nome da categoria nao pode ser vazio.");
+        }
+        if(textoPercentual.isBlank()){
+            throw new IllegalArgumentException("Percentual de lucro nao pode ser vazio.");
+        }
+
+        double percentualLucro = Double.parseDouble(textoPercentual.replace(",", "."));
         int linha = view.getTblCategoriasCadastradas().getSelectedRow();
+        
         if (linha == -1) {
-            repository.salvar(categoria);
+            categoriaService.salvar(nomeCategoria, percentualLucro);
         } 
         else {
-            categoria = repository.listar().get(linha);
-            categoria.setNomeCategoria(nomeCategoria);
-            categoria.setPercentualLucro(percentualLucro);
-            repository.salvar(categoria);
+            categoria = categoriaService.listar().get(linha);
+            categoriaService.editar(categoria, nomeCategoria, percentualLucro);
         }
-        JOptionPane.showMessageDialog(view, "Categoria: " + categoria.getNomeCategoria() + " salvo com sucesso");
+        
+        JOptionPane.showMessageDialog(view, "Categoria: " + nomeCategoria + " salva com sucesso");
         limparConteudoView();
         listar();
         modoVisualizacao();
@@ -110,26 +121,32 @@ public class CategoriaPresenter {
     private void listar(){
         DefaultTableModel modelo = (DefaultTableModel) view.getTblCategoriasCadastradas().getModel();
         modelo.setRowCount(0);
-        for (Categoria categoria : repository.listar()) {
-            modelo.addRow(new Object[]{categoria.getNomeCategoria(),categoria.getPercentualLucro()});
+        for (Categoria categoriaLista : categoriaService.listar()) {
+            modelo.addRow(new Object[]{categoriaLista.getNomeCategoria(), categoriaLista.getPercentualLucro()});
         }
     }
     
     private void editar(){
         int linha = view.getTblCategoriasCadastradas().getSelectedRow(); 
-        Categoria categoria = repository.listar().get(linha);
-        view.getTxtNomeCategoria().setText(categoria.getNomeCategoria());
-        view.getTxtPercentualLucro().setText(String.valueOf(categoria.getPercentualLucro()));
+        if (linha == -1) {
+            throw new IllegalArgumentException("Selecione uma categoria na tabela para editar.");
+        }
+        Categoria categoriaLista = categoriaService.listar().get(linha);
+        view.getTxtNomeCategoria().setText(categoriaLista.getNomeCategoria());
+        view.getTxtPercentualLucro().setText(String.valueOf(categoriaLista.getPercentualLucro()));
         modoInclusao();
     }
     
     private void excluir(){
         int linha = view.getTblCategoriasCadastradas().getSelectedRow();
-        Categoria categoria = repository.listar().get(linha);
-        int confirmacao = JOptionPane.showConfirmDialog(view, "Deseja realmente excluir a categoria " + categoria.getNomeCategoria(), "Confirmacao de Exclusao", JOptionPane.YES_NO_OPTION);
+        if (linha == -1) {
+            throw new IllegalArgumentException("Selecione uma categoria na tabela para excluir.");
+        }
+        Categoria categoriaLista = categoriaService.listar().get(linha);
+        int confirmacao = JOptionPane.showConfirmDialog(view, "Deseja realmente excluir a categoria " + categoriaLista.getNomeCategoria(), "Confirmacao de Exclusao", JOptionPane.YES_NO_OPTION);
         if (confirmacao == JOptionPane.YES_OPTION){
-            repository.excluir(categoria);
-            JOptionPane.showMessageDialog(view, "Categoria: " + categoria.getNomeCategoria() + " excluida com sucesso");
+            categoriaService.excluir(categoriaLista);
+            JOptionPane.showMessageDialog(view, "Categoria: " + categoriaLista.getNomeCategoria() + " excluida com sucesso");
         } 
         else if(confirmacao == JOptionPane.NO_OPTION) {
             JOptionPane.showMessageDialog(view, "Exclusao cancelada");

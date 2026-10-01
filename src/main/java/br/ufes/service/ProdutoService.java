@@ -31,9 +31,9 @@ public class ProdutoService {
         produtoRepository.salvar(produto);
     }
 
-    public void editar(Produto produto, String nomeProduto, double precoCusto, Categoria categoria) {
+    public void editar(Produto produto, String nomeProduto, double precoCusto, Categoria categoria){
         if (produto == null) {
-            throw new IllegalArgumentException("Produto não selecionado para edição.");
+            throw new IllegalArgumentException("Produto nao selecionado para edicao.");
         }
         produto.setNomeProduto(nomeProduto);
         produto.setPrecoCusto(precoCusto);
