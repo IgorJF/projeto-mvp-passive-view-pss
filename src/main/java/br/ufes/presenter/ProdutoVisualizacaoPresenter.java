@@ -88,7 +88,7 @@ public class ProdutoVisualizacaoPresenter {
 
     private void visualizarHistorico() {
         if (this.produto != null) {
-            new ProdutoHistoricoPresenter(this.produto, repositoryHistorico);
+            new ProdutoHistoricoPresenter(this.produto);
         } else {
             JOptionPane.showMessageDialog(view, "Nenhum produto selecionado para exibir o historico.");
         }

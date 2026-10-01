@@ -8,26 +8,32 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class CalculoPrecoService {
-
     private IProdutoRepository produtoRepository;
 
     public CalculoPrecoService(IProdutoRepository produtoRepository) {
         this.produtoRepository = produtoRepository;
     }
 
-    public void calcularPrecos() {
-        List<Produto> produtos = produtoRepository.listar();
-        for (Produto produto : produtos) {
+    public boolean calcularPrecos() {
+        boolean podeCalcular = true;
+
+        for (Produto produto : produtoRepository.listar()){
             Categoria categoria = produto.getCategoria();
             double percentualLucro = categoria.getPercentualLucro();
             double precoCusto = produto.getPrecoCusto();
             double precoVenda = precoCusto * (1 + percentualLucro / 100);
-            
+
             produto.setPrecoVenda(precoVenda);
             produto.setMargemLucro(percentualLucro);
             HistoricoPreco historico = produto.getHistoricoPreco();
 
-            historico.adicionarPreco(precoVenda,percentualLucro, LocalDate.now());
+            if (ValidadorDatasService.podeCalcular(historico.getUltimaDataCalculada())){
+                historico.adicionarPreco(precoVenda, percentualLucro, LocalDate.now());
+            } 
+            else{
+                podeCalcular = false;
+            }
         }
+        return podeCalcular;
     }
 }

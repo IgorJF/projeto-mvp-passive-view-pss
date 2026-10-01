@@ -25,6 +25,7 @@ public class TelaPrincipalPresenter {
         telaProduto();
         telaCategoria();
         telaBuscaProduto();
+        telaCalcularPreco();
     }
     
     private void configuraView() {
@@ -66,6 +67,20 @@ public class TelaPrincipalPresenter {
                 }
                 catch(Exception e){
                     JOptionPane.showMessageDialog(telaPrincipal, "Erro: Não foi possivel abrir a tela de busca de produtos - " + e.getMessage());
+                }
+            }
+        });
+    }
+    
+    private void telaCalcularPreco(){
+        telaPrincipal.getjMenuItemCalcularLucro().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae){
+                try{
+                    new CalculoMargemPrecoPresenter(produtoRepository);
+                }
+                catch(Exception e){
+                    JOptionPane.showMessageDialog(telaPrincipal, "Erro: Não foi possivel abrir a tela de calcular margem de produto - " + e.getMessage());
                 }
             }
         });

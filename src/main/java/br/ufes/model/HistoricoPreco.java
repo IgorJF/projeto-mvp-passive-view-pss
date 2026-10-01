@@ -5,21 +5,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HistoricoPreco {
-
     private List<Double> precos;
     private List<Double> percentuaisLucro;
     private List<LocalDate> datas;
+    private LocalDate ultimaDataCalculada;
 
     public HistoricoPreco() {
         this.precos = new ArrayList<>();
         this.percentuaisLucro = new ArrayList<>();
         this.datas = new ArrayList<>();
+        this.ultimaDataCalculada = null;
     }
 
     public void adicionarPreco(double preco, double percentualLucro, LocalDate data) {
         precos.add(preco);
         percentuaisLucro.add(percentualLucro);
         datas.add(data);
+        ultimaDataCalculada = data;
     }
 
     public List<Double> getPrecos() {
@@ -32,6 +34,10 @@ public class HistoricoPreco {
 
     public List<LocalDate> getDatas() {
         return datas;
+    }
+    
+    public LocalDate getUltimaDataCalculada() {
+        return ultimaDataCalculada;
     }
 }
 
