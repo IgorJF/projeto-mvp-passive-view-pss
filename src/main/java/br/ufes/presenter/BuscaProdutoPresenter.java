@@ -8,6 +8,8 @@ import br.ufes.view.BuscaProdutoView;
 import br.ufes.view.ProdutoView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -23,6 +25,7 @@ public class BuscaProdutoPresenter {
     private ICategoriaRepository repositoryCategoria;
     private ProdutoPresenter produtoPresenter;
     private IHistoricoPrecoRepository repositoryHistorico;
+    private List<Produto> produtosPesquisados = new ArrayList<>();
     
     public BuscaProdutoPresenter(IProdutoRepository repositoryProduto, ICategoriaRepository repositoryCategoria, IHistoricoPrecoRepository repositoryHistorico){
         view = new BuscaProdutoView();
@@ -98,7 +101,7 @@ public class BuscaProdutoPresenter {
     
     private void buscar(){
         String filtro = view.getCmbFiltro().getSelectedItem().toString();
-        String caixaDePesquisa = view.getTxtPesquisa().getText();
+        String caixaDePesquisa = view.getTxtPesquisa().getText().toLowerCase();
         boolean encontrou = false;
         limparTabela();
         
@@ -110,7 +113,7 @@ public class BuscaProdutoPresenter {
 
         if(filtro.equals("Nome do Produto")){
             for(Produto produto : repositoryProduto.listar()){
-                if(produto.getNomeProduto().equalsIgnoreCase(caixaDePesquisa)){
+                if(produto.getNomeProduto().toLowerCase().contains(caixaDePesquisa)){
                     listarProdutoPesquisado(produto);
                     encontrou = true;
                 }
@@ -118,7 +121,7 @@ public class BuscaProdutoPresenter {
         }
         else if(filtro.equals("Categoria")){
             for(Produto produto : repositoryProduto.listar()){
-                if(produto.getCategoria().getNomeCategoria().equalsIgnoreCase(caixaDePesquisa)){
+                if(produto.getCategoria().getNomeCategoria().toLowerCase().contains(caixaDePesquisa)){
                     listarProdutoPesquisado(produto);
                     encontrou = true;
                 }
@@ -131,6 +134,7 @@ public class BuscaProdutoPresenter {
     }
     
     private void listarProdutoPesquisado(Produto produto){
+        produtosPesquisados.add(produto);
         DefaultTableModel modelo = (DefaultTableModel) view.getTblProdutosPesquisados().getModel();
         modelo.addRow(new Object[]{
             produto.getNomeProduto(),
@@ -142,6 +146,7 @@ public class BuscaProdutoPresenter {
     }
     
     private void listarProdutos(){
+        produtosPesquisados.clear();
         DefaultTableModel modelo = (DefaultTableModel) view.getTblProdutosPesquisados().getModel();
         modelo.setRowCount(0);
         for (Produto produto : repositoryProduto.listar()) {
@@ -156,6 +161,7 @@ public class BuscaProdutoPresenter {
     }
     
     private void limparTabela(){
+        produtosPesquisados.clear();
         DefaultTableModel modelo = (DefaultTableModel) view.getTblProdutosPesquisados().getModel();
         modelo.setRowCount(0);
     }
@@ -170,7 +176,7 @@ public class BuscaProdutoPresenter {
     
     private void visualizar(){
         int linha = view.getTblProdutosPesquisados().getSelectedRow();
-        Produto produto = repositoryProduto.listar().get(linha);
+        Produto produto = produtosPesquisados.get(linha);
         produtoPresenter = new ProdutoPresenter(repositoryProduto, repositoryCategoria);
         produtoPresenter.visualizar(produto);
     }

@@ -20,11 +20,14 @@ public class ProdutoService {
         this.produtoRepository = produtoRepository;
     }
 
-    public void salvar(String nomeProduto, double precoCusto, Categoria categoria) {
+    public void salvar(String nomeProduto, double precoCusto, Categoria categoria){
+        if (nomeProduto.isEmpty()) {
+            throw new IllegalArgumentException("Produto deve ter um nome.");
+        }
         if (categoria == null) {
             throw new IllegalArgumentException("O produto deve pertencer a uma categoria.");
         }
-        if (precoCusto < 0) {
+        if (precoCusto <= 0) {
             throw new IllegalArgumentException("O preco de custo deve ser maior que zero.");
         }
         Produto produto = new Produto(nomeProduto, precoCusto, categoria);
@@ -32,8 +35,17 @@ public class ProdutoService {
     }
 
     public void editar(Produto produto, String nomeProduto, double precoCusto, Categoria categoria){
+        if (nomeProduto.isEmpty()) {
+            throw new IllegalArgumentException("Produto deve ter um nome.");
+        }
         if (produto == null) {
             throw new IllegalArgumentException("Produto nao selecionado para edicao.");
+        }
+        if (categoria == null) {
+            throw new IllegalArgumentException("O produto deve pertencer a uma categoria.");
+        }
+        if (precoCusto <= 0) {
+            throw new IllegalArgumentException("O preco de custo deve ser maior que zero.");
         }
         produto.setNomeProduto(nomeProduto);
         produto.setPrecoCusto(precoCusto);
