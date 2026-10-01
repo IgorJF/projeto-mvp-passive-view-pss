@@ -84,7 +84,6 @@ public class ProdutoVisualizacaoPresenter {
 
     private void editar() {
         produtoPresenter = new ProdutoPresenter(repositoryProduto, repositoryCategoria);
-        produtoPresenter.editar(produto);
     }
 
     private void visualizarHistorico() {

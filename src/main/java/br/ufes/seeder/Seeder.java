@@ -70,10 +70,7 @@ public class Seeder {
     
     private void adicionarProduto(IProdutoRepository produtos, String nome, double precoCusto, Categoria categoria) {
         if (categoria != null) {
-            double margemLucro = categoria.getPercentualLucro();
-            double precoVenda = precoCusto * (1 + margemLucro / 100);
-            precoVenda = Math.round(precoVenda * 100.0) / 100.0;
-            Produto produto = new Produto(nome, precoCusto, categoria, margemLucro, precoVenda);
+            Produto produto = new Produto(nome, precoCusto, categoria);
             produtos.salvar(produto);
         }
     }

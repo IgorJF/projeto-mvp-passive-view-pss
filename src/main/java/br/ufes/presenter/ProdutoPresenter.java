@@ -6,6 +6,8 @@ import br.ufes.repository.CategoriaRepository;
 import br.ufes.repository.ICategoriaRepository;
 import br.ufes.repository.IHistoricoPrecoRepository;
 import br.ufes.repository.IProdutoRepository;
+import br.ufes.service.CategoriaService;
+import br.ufes.service.ProdutoService;
 import br.ufes.view.ProdutoView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,15 +15,17 @@ import javax.swing.JOptionPane;
 
 public class ProdutoPresenter {
     private ProdutoView view;
-    private Categoria categoria;
     private Produto produto;
     private IProdutoRepository repositoryProduto;
     private ICategoriaRepository repositoryCategoria;
     private IHistoricoPrecoRepository repositoryHistorico;
+    private CategoriaService categoriaService;
+    private ProdutoService produtoService;
     
     public ProdutoPresenter(IProdutoRepository repositoryProduto, ICategoriaRepository repositoryCategoria){
         this.repositoryProduto = repositoryProduto;
         this.repositoryCategoria = repositoryCategoria;
+        produtoService = new ProdutoService(repositoryProduto, repositoryHistorico);
         view = new ProdutoView();
         configuraView(); 
     }
@@ -29,24 +33,11 @@ public class ProdutoPresenter {
     public ProdutoView getView() {
         return view;
     }
-    
-    public void editar(Produto produto) {
-        this.produto = produto;
-        view.getTxtNomeProduto().setText(produto.getNomeProduto());
-        view.getTxtPrecoCusto().setText(String.format(java.util.Locale.US, "%.2f", produto.getPrecoCusto()));
-        view.getCmbCategoriaProduto().setSelectedItem(produto.getCategoria());
-    }
 
     private void configuraView() {
         view.setVisible(false);
         listarCategorias();
         limparConteudoView();
-        view.getCmbCategoriaProduto().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                selecionarCategoria();
-            }
-        });
         view.getBtnSalvar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -74,28 +65,28 @@ public class ProdutoPresenter {
     
     private void salvar(){
         String nomeProduto = view.getTxtNomeProduto().getText(); 
-        double precoCusto = Double.parseDouble(view.getTxtPrecoCusto().getText().replace(",", "."));
-        Categoria categoriaProduto = categoria;
-        double margemLucro = categoria.getPercentualLucro();
-        double precoVenda = calcularPrecoVenda(precoCusto);
+        String textoPrecoCusto = view.getTxtPrecoCusto().getText();
+        Categoria categoriaProduto = (Categoria)view.getCmbCategoriaProduto().getSelectedItem();
+        
+        if(nomeProduto.isBlank()){
+             throw new IllegalArgumentException("Nome do produto nao pode ser vazio.");
+        }
+        if(textoPrecoCusto.isBlank()){
+            throw new IllegalArgumentException("Preco de custo nao pode ser vazio.");
+        }
+        if(categoriaProduto == null){
+            throw new IllegalArgumentException("Uma categoria deve ser selecionada.");
+        }
+        
+        double precoCusto = Double.parseDouble(textoPrecoCusto.replace(",", "."));
         if(produto == null){
-            produto = new Produto(
-                nomeProduto,
-                precoCusto,
-                categoriaProduto,
-                margemLucro,
-                precoVenda
-            );
+            produtoService.salvar(nomeProduto, precoCusto, categoriaProduto);
         }
         else{
-            produto.setNomeProduto(nomeProduto);
-            produto.setPrecoCusto(precoCusto);
-            produto.setCategoria(categoriaProduto);
-            produto.setMargemLucro(margemLucro);
-            produto.setPrecoVenda(precoVenda);
+            produtoService.editar(produto, nomeProduto, precoCusto, categoriaProduto);
         }
-        repositoryProduto.salvar(produto);
-        JOptionPane.showMessageDialog(view, "Produto: " + produto.getNomeProduto() + " salvo com sucesso");
+        
+        JOptionPane.showMessageDialog(view, "Produto: " + nomeProduto + " salvo com sucesso");
         limparConteudoView();
     }
     
@@ -103,19 +94,6 @@ public class ProdutoPresenter {
         for (Categoria categoria : repositoryCategoria.listar()) {
             view.getCmbCategoriaProduto().addItem(categoria);
         }
-    }
-    
-    private Categoria selecionarCategoria(){
-        categoria = (Categoria)view.getCmbCategoriaProduto().getSelectedItem();
-        if(categoria != null){
-            view.getTxtMargemLucro().setText(String.valueOf(categoria.getPercentualLucro()));
-            view.getTxtPrecoVenda().setText(String.format("R$ %.2f", calcularPrecoVenda(Double.parseDouble(view.getTxtPrecoCusto().getText().replace(",", ".")))));
-        }
-        return categoria;
-    }
-    
-    private double calcularPrecoVenda(double precoCusto){
-        return precoCusto * (1 + (categoria.getPercentualLucro()/100));
     }
     
     private void cancelar(){

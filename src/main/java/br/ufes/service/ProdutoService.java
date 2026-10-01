@@ -25,40 +25,21 @@ public class ProdutoService {
         if (categoria == null) {
             throw new IllegalArgumentException("O produto deve pertencer a uma categoria.");
         }
-        if (precoCusto <= 0) {
+        if (precoCusto < 0) {
             throw new IllegalArgumentException("O preco de custo deve ser maior que zero.");
         }
-
-        double margemLucro = categoria.getPercentualLucro();
-        double precoVenda = calcularPrecoVenda(precoCusto, margemLucro);
-
-        Produto produto = new Produto(nomeProduto, precoCusto, categoria, margemLucro, precoVenda);
+        Produto produto = new Produto(nomeProduto, precoCusto, categoria);
         produtoRepository.salvar(produto);
-
-        registrarHistorico(produto);
     }
 
-    public void atualizar(Produto produto, String nomeProduto, double precoCusto, Categoria categoria) {
+    public void editar(Produto produto, String nomeProduto, double precoCusto, Categoria categoria) {
         if (produto == null) {
             throw new IllegalArgumentException("Produto não selecionado para edição.");
         }
-
-        double margemLucro = categoria.getPercentualLucro();
-        double novoPrecoVenda = calcularPrecoVenda(precoCusto, margemLucro);
-
-        boolean precoMudou = (produto.getPrecoVenda() != novoPrecoVenda);
-
         produto.setNomeProduto(nomeProduto);
         produto.setPrecoCusto(precoCusto);
         produto.setCategoria(categoria);
-        produto.setMargemLucro(margemLucro);
-        produto.setPrecoVenda(novoPrecoVenda);
-
         produtoRepository.salvar(produto);
-
-        if (precoMudou) {
-            registrarHistorico(produto);
-        }
     }
 
     public List<Produto> listar() {
