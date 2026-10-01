@@ -21,7 +21,6 @@ public class BuscaProdutoPresenter {
     private ICategoriaRepository repositoryCategoria;
     private ProdutoPresenter produtoPresenter;
     private IHistoricoPrecoRepository repositoryHistorico;
-    private ProdutoVisualizacaoPresenter produtoVisualizacao;
     
     public BuscaProdutoPresenter(IProdutoRepository repositoryProduto, ICategoriaRepository repositoryCategoria, IHistoricoPrecoRepository repositoryHistorico){
         view = new BuscaProdutoView();
@@ -166,7 +165,8 @@ public class BuscaProdutoPresenter {
         }
         else{
             Produto produto = repositoryProduto.listar().get(linha);
-            produtoVisualizacao = new ProdutoVisualizacaoPresenter(produto, repositoryHistorico, repositoryCategoria, repositoryProduto);
+            produtoPresenter = new ProdutoPresenter(repositoryProduto, repositoryCategoria);
+            produtoPresenter.visualizar(produto);
         }
     }
 }
