@@ -9,6 +9,8 @@ import br.ufes.view.ProdutoView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -75,6 +77,14 @@ public class BuscaProdutoPresenter {
                 } 
                 catch(Exception ex){
                     JOptionPane.showMessageDialog(view, "Falha: " + ex.getMessage());
+                }
+            }
+        });
+        view.getTblProdutosPesquisados().getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (view.getTblProdutosPesquisados().getSelectedRow() != -1) {
+                    view.getBtnVisualizar().setEnabled(true);
                 }
             }
         });
@@ -160,13 +170,8 @@ public class BuscaProdutoPresenter {
     
     private void visualizar(){
         int linha = view.getTblProdutosPesquisados().getSelectedRow();
-        if(linha == -1){
-            JOptionPane.showMessageDialog(view, "Selecione uma linha");
-        }
-        else{
-            Produto produto = repositoryProduto.listar().get(linha);
-            produtoPresenter = new ProdutoPresenter(repositoryProduto, repositoryCategoria);
-            produtoPresenter.visualizar(produto);
-        }
+        Produto produto = repositoryProduto.listar().get(linha);
+        produtoPresenter = new ProdutoPresenter(repositoryProduto, repositoryCategoria);
+        produtoPresenter.visualizar(produto);
     }
 }

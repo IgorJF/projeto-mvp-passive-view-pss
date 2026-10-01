@@ -78,6 +78,7 @@ public class ProdutoPresenter {
         });
 
         modoInclusao();
+        view.setDefaultCloseOperation(ProdutoView.DISPOSE_ON_CLOSE);
         view.setVisible(true);
     }
 
@@ -134,7 +135,7 @@ public class ProdutoPresenter {
         view.getBtnEditar().setVisible(false);
         view.getBtnSalvar().setVisible(true);
         view.getBtnCancelar().setVisible(true);
-        view.getBtnHistorico().setEnabled(false);
+        view.getBtnHistorico().setVisible(false);
     }
 
     private void modoEdicao(){
@@ -143,7 +144,7 @@ public class ProdutoPresenter {
         view.getBtnEditar().setVisible(false);
         view.getBtnSalvar().setVisible(true);
         view.getBtnCancelar().setVisible(true);
-        view.getBtnHistorico().setEnabled(true);
+        view.getBtnHistorico().setVisible(false);
     }
 
     private void modoVisualizacao(){
@@ -152,7 +153,7 @@ public class ProdutoPresenter {
         view.getBtnEditar().setVisible(true);
         view.getBtnSalvar().setVisible(false);
         view.getBtnCancelar().setVisible(false);
-        view.getBtnHistorico().setEnabled(true);
+        view.getBtnHistorico().setVisible(true);
     }
 
     private void habilitarCampos(boolean habilitado){

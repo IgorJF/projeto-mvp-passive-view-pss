@@ -75,6 +75,7 @@ public class BuscaProdutoView extends javax.swing.JFrame {
         btnNovo.setText("Novo");
 
         btnVisualizar.setText("Visualizar");
+        btnVisualizar.setEnabled(false);
 
         btnFechar.setText("Fechar");
 
