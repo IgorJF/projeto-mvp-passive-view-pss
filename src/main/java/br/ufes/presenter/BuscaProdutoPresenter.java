@@ -88,6 +88,7 @@ public class BuscaProdutoPresenter {
             public void valueChanged(ListSelectionEvent e) {
                 if (view.getTblProdutosPesquisados().getSelectedRow() != -1) {
                     view.getBtnVisualizar().setEnabled(true);
+                    view.getBtnExcluir().setEnabled(true);
                 }
             }
         });
@@ -179,5 +180,10 @@ public class BuscaProdutoPresenter {
         Produto produto = produtosPesquisados.get(linha);
         produtoPresenter = new ProdutoPresenter(repositoryProduto, repositoryCategoria);
         produtoPresenter.visualizar(produto);
+    }
+    
+    private void excluir(){
+        int linha = view.getTblProdutosPesquisados().getSelectedRow();
+        Produto produto = produtosPesquisados.get(linha);
     }
 }

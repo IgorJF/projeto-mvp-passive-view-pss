@@ -2,10 +2,12 @@ package br.ufes.service;
 
 import br.ufes.model.Categoria;
 import br.ufes.repository.ICategoriaRepository;
+import br.ufes.repository.IProdutoRepository;
 import java.util.List;
 
 public class CategoriaService {
     private ICategoriaRepository categoriaRepository;
+    private IProdutoRepository produtoRepository;
 
     public CategoriaService(ICategoriaRepository categoriaRepository){
         this.categoriaRepository = categoriaRepository;

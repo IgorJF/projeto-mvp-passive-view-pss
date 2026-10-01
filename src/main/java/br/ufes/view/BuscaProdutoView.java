@@ -42,6 +42,7 @@ public class BuscaProdutoView extends javax.swing.JFrame {
         btnVisualizar = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,6 +82,9 @@ public class BuscaProdutoView extends javax.swing.JFrame {
 
         btnBuscar.setText("Buscar");
 
+        btnExcluir.setText("Excluir");
+        btnExcluir.setEnabled(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -107,6 +111,8 @@ public class BuscaProdutoView extends javax.swing.JFrame {
                         .addComponent(btnVisualizar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnFechar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnExcluir)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -125,7 +131,8 @@ public class BuscaProdutoView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovo)
                     .addComponent(btnVisualizar)
-                    .addComponent(btnFechar))
+                    .addComponent(btnFechar)
+                    .addComponent(btnExcluir))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -159,11 +166,14 @@ public class BuscaProdutoView extends javax.swing.JFrame {
     public JButton getBtnBuscar() {
         return btnBuscar;
     }
-    
-    
+
+    public JButton getBtnExcluir() {
+        return btnExcluir;
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnFechar;
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnVisualizar;
