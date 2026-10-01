@@ -111,10 +111,7 @@ public class CategoriaPresenter {
         DefaultTableModel modelo = (DefaultTableModel) view.getTblCategoriasCadastradas().getModel();
         modelo.setRowCount(0);
         for (Categoria categoria : repository.listar()) {
-            modelo.addRow(new Object[]{
-                categoria.getNomeCategoria(),
-                categoria.getPercentualLucro()
-            });
+            modelo.addRow(new Object[]{categoria.getNomeCategoria(),categoria.getPercentualLucro()});
         }
     }
     

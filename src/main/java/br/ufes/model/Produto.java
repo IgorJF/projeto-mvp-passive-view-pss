@@ -1,5 +1,7 @@
 package br.ufes.model;
 
+import br.ufes.repository.IHistoricoPrecoRepository;
+
 public class Produto {
     private int id;
     private String nomeProduto;
@@ -7,11 +9,13 @@ public class Produto {
     private Categoria categoria;
     private double margemLucro;
     private double precoVenda;
+    private HistoricoPreco historicoPreco;
     
     public Produto(String nomeProduto, double precoCusto, Categoria categoria){
         this.nomeProduto = nomeProduto;
         this.precoCusto = precoCusto;
         this.categoria = categoria;
+        this.historicoPreco = new HistoricoPreco();
     }
 
     public int getId() {
@@ -60,6 +64,10 @@ public class Produto {
 
     public void setPrecoVenda(double precoVenda) {
         this.precoVenda = precoVenda;
+    }
+    
+     public HistoricoPreco getHistoricoPreco() {
+        return historicoPreco;
     }
 }
 

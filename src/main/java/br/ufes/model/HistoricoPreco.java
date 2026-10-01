@@ -1,35 +1,37 @@
 package br.ufes.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
-    public class HistoricoPreco {
+public class HistoricoPreco {
 
-    private Produto produto;
-    private LocalDate data;
-    private double percentualLucro;
-    private double precoVenda;
+    private List<Double> precos;
+    private List<Double> percentuaisLucro;
+    private List<LocalDate> datas;
 
-    public HistoricoPreco(Produto produto, LocalDate data, double percentualLucro, double precoVenda) {
-        this.produto = produto;
-        this.data = data;
-        this.percentualLucro = percentualLucro;
-        this.precoVenda = precoVenda;
+    public HistoricoPreco() {
+        this.precos = new ArrayList<>();
+        this.percentuaisLucro = new ArrayList<>();
+        this.datas = new ArrayList<>();
     }
 
-    public Produto getProduto() {
-        return produto;
+    public void adicionarPreco(double preco, double percentualLucro, LocalDate data) {
+        precos.add(preco);
+        percentuaisLucro.add(percentualLucro);
+        datas.add(data);
     }
 
-    public LocalDate getData() {
-        return data;
+    public List<Double> getPrecos() {
+        return precos;
     }
 
-    public double getPercentualLucro() {
-        return percentualLucro;
+    public List<Double> getPercentuaisLucro() {
+        return percentuaisLucro;
     }
 
-    public double getPrecoVenda() {
-        return precoVenda;
+    public List<LocalDate> getDatas() {
+        return datas;
     }
 }
 

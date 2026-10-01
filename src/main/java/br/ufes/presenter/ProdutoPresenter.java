@@ -25,7 +25,7 @@ public class ProdutoPresenter {
     public ProdutoPresenter(IProdutoRepository repositoryProduto, ICategoriaRepository repositoryCategoria){
         this.repositoryProduto = repositoryProduto;
         this.repositoryCategoria = repositoryCategoria;
-        produtoService = new ProdutoService(repositoryProduto, repositoryHistorico);
+        produtoService = new ProdutoService(repositoryProduto);
         view = new ProdutoView();
         configuraView(); 
     }

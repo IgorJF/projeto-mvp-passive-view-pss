@@ -10,5 +10,4 @@ import java.util.List;
 
 public interface IHistoricoPrecoRepository {
     void salvar(HistoricoPreco historico);
-    List<HistoricoPreco> listarPorProduto(Produto produto);
 }

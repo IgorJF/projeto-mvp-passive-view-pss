@@ -16,9 +16,8 @@ public class ProdutoService {
     private IProdutoRepository produtoRepository;
     private IHistoricoPrecoRepository historicoRepository;
 
-    public ProdutoService(IProdutoRepository produtoRepository, IHistoricoPrecoRepository historicoRepository) {
+    public ProdutoService(IProdutoRepository produtoRepository) {
         this.produtoRepository = produtoRepository;
-        this.historicoRepository = historicoRepository;
     }
 
     public void salvar(String nomeProduto, double precoCusto, Categoria categoria) {
@@ -44,15 +43,5 @@ public class ProdutoService {
 
     public List<Produto> listar() {
         return produtoRepository.listar();
-    }
-
-    private double calcularPrecoVenda(double precoCusto, double margemLucro) {
-        double precoVenda = precoCusto * (1 + (margemLucro/100));
-        return Math.round(precoVenda * 100.0)/100.0;
-    }
-
-    private void registrarHistorico(Produto produto) {
-        HistoricoPreco historico = new HistoricoPreco(produto, LocalDate.now(), produto.getMargemLucro(), produto.getPrecoVenda());
-        historicoRepository.salvar(historico);
     }
 }
