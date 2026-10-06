@@ -1,12 +1,15 @@
 package br.ufes.projetomvp;
 
+import br.ufes.presenter.LoginPresenter;
 import br.ufes.presenter.TelaPrincipalPresenter;
 import br.ufes.repository.CategoriaRepository;
 import br.ufes.repository.HistoricoPrecoRepository;
 import br.ufes.repository.ICategoriaRepository;
 import br.ufes.repository.IHistoricoPrecoRepository;
 import br.ufes.repository.IProdutoRepository;
+import br.ufes.repository.IUsuarioRepository;
 import br.ufes.repository.ProdutoRepository;
+import br.ufes.repository.UsuarioRepository;
 import br.ufes.seeder.Seeder;
 
 public class ProjetoMVP {
@@ -14,7 +17,8 @@ public class ProjetoMVP {
         ICategoriaRepository categorias = new CategoriaRepository();
         IProdutoRepository produtos = new ProdutoRepository();
         IHistoricoPrecoRepository historico = new HistoricoPrecoRepository();
-        Seeder seeder = new Seeder(categorias, produtos);
-        TelaPrincipalPresenter telaPrincipal = new TelaPrincipalPresenter(categorias, produtos, historico);
+        IUsuarioRepository usuarios = new UsuarioRepository();
+        Seeder seeder = new Seeder(categorias, produtos, usuarios);
+        new LoginPresenter(usuarios, categorias,produtos, historico);
     }
 }

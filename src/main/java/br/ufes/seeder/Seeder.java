@@ -2,16 +2,20 @@ package br.ufes.seeder;
 
 import br.ufes.model.Categoria;
 import br.ufes.model.Produto;
+import br.ufes.model.Usuario;
 import br.ufes.repository.ICategoriaRepository;
 import br.ufes.repository.IProdutoRepository;
+import br.ufes.repository.IUsuarioRepository;
 
 public class Seeder {
-    public Seeder(ICategoriaRepository categorias, IProdutoRepository produtos){
+
+    public Seeder(ICategoriaRepository categorias, IProdutoRepository produtos, IUsuarioRepository usuarios){
         criarCategoriasIniciais(categorias);
         criarProdutosIniciais(produtos, categorias);
+        criarUsuarioTeste(usuarios);
     }
-    
-    private void criarCategoriasIniciais(ICategoriaRepository categorias){
+
+    private void criarCategoriasIniciais(ICategoriaRepository categorias) {
         categorias.salvar(new Categoria("Educação", 25.0));
         categorias.salvar(new Categoria("Papelaria", 30.0));
         categorias.salvar(new Categoria("Alimentação", 22.0));
@@ -20,8 +24,11 @@ public class Seeder {
         categorias.salvar(new Categoria("Higiene", 28.0));
         categorias.salvar(new Categoria("Limpeza", 25.0));
     }
-    
-    private void criarProdutosIniciais(IProdutoRepository produtos, ICategoriaRepository categorias) {
+
+    private void criarProdutosIniciais(
+            IProdutoRepository produtos,
+            ICategoriaRepository categorias) {
+
         Categoria educacao = buscarCategoria(categorias, "Educação");
         Categoria papelaria = buscarCategoria(categorias, "Papelaria");
         Categoria alimentacao = buscarCategoria(categorias, "Alimentação");
@@ -58,18 +65,23 @@ public class Seeder {
         adicionarProduto(produtos, "Detergente líquido", 2.60, limpeza);
         adicionarProduto(produtos, "Esponja multiuso", 1.70, limpeza);
     }
-    
+
+    private void criarUsuarioTeste(IUsuarioRepository usuarios) {
+        Usuario teste = new Usuario("Teste", "teste@email.com", "teste","123");
+        usuarios.salvar(teste);
+    }
+
     private Categoria buscarCategoria(ICategoriaRepository categorias, String nome) {
-        for (Categoria categoria : categorias.listar()) {
-            if (categoria.getNomeCategoria().equalsIgnoreCase(nome)) {
+        for (Categoria categoria : categorias.listar()){
+            if (categoria.getNomeCategoria().equalsIgnoreCase(nome)){
                 return categoria;
             }
         }
         return null;
     }
-    
-    private void adicionarProduto(IProdutoRepository produtos, String nome, double precoCusto, Categoria categoria) {
-        if (categoria != null) {
+
+    private void adicionarProduto(IProdutoRepository produtos, String nome, double precoCusto, Categoria categoria){
+        if (categoria != null){
             Produto produto = new Produto(nome, precoCusto, categoria);
             produtos.salvar(produto);
         }
