@@ -1,88 +1,74 @@
 package br.ufes.presenter;
 
 import br.ufes.repository.ICategoriaRepository;
-import br.ufes.repository.IHistoricoPrecoRepository;
 import br.ufes.repository.IProdutoRepository;
-import br.ufes.view.CategoriaView;
-import br.ufes.view.ProdutoView;
 import br.ufes.view.TelaPrincipal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
+import br.ufes.repository.IHistoricoPrecoRepository;
 
 public class TelaPrincipalPresenter {
-    private TelaPrincipal telaPrincipal;
+    private TelaPrincipal view;
     private ICategoriaRepository categoriaRepository;
     private IProdutoRepository produtoRepository;
-    private IHistoricoPrecoRepository repositoryHistorico;
+    private IHistoricoPrecoRepository historicoRepository;
 
-    public TelaPrincipalPresenter(ICategoriaRepository categoriaRepository, IProdutoRepository produtoRepository, IHistoricoPrecoRepository repositoryHistorico) {
+    public TelaPrincipalPresenter(TelaPrincipal view, ICategoriaRepository categoriaRepository, IProdutoRepository produtoRepository, IHistoricoPrecoRepository historicoRepository){
+        this.view = view;
         this.categoriaRepository = categoriaRepository;
         this.produtoRepository = produtoRepository;
-         this.repositoryHistorico = repositoryHistorico;
-        telaPrincipal = new TelaPrincipal();
+        this.historicoRepository = historicoRepository;
         configuraView();
-        telaProduto();
-        telaCategoria();
-        telaBuscaProduto();
-        telaCalcularPreco();
     }
     
-    private void configuraView() {
-        telaPrincipal.setVisible(true);
-    }
-    
-    private void telaProduto(){
-        telaPrincipal.getjMenuItemIncluirProdutos().addActionListener(new ActionListener() {
+    private void configuraView(){
+        view.setVisible(true);
+        
+        view.getjMenuItemCategorias().addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent ae) {
+            public void actionPerformed(ActionEvent e) {
                 try{
-                    new ProdutoPresenter(produtoRepository, categoriaRepository);
-                } catch(Exception e){
-                    JOptionPane.showMessageDialog(telaPrincipal, "Erro: Não foi possivel abrir a tela de incluir produtos - " + e.getMessage());
-                }
-            }
-        });          
-    }
-    
-    private void telaCategoria(){
-        telaPrincipal.getjMenuItemCategorias().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                try{
-                    new CategoriaPresenter(categoriaRepository);
-                } catch(Exception e){
-                    JOptionPane.showMessageDialog(telaPrincipal, "Erro: Não foi possivel abrir a tela de categorias - " + e.getMessage());
-                }
-            }
-        });          
-    }
-    
-    private void telaBuscaProduto(){
-        telaPrincipal.getjMenuItemBuscarProdutos().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae){
-                try{
-                    new BuscaProdutoPresenter(produtoRepository, categoriaRepository, repositoryHistorico);
-                }
-                catch(Exception e){
-                    JOptionPane.showMessageDialog(telaPrincipal, "Erro: Não foi possivel abrir a tela de busca de produtos - " + e.getMessage());
+                    new CategoriaPresenter(categoriaRepository, produtoRepository);
+                } catch(Exception ex){
+                    JOptionPane.showMessageDialog(view, "Falha: " + ex.getMessage());
                 }
             }
         });
-    }
-    
-    private void telaCalcularPreco(){
-        telaPrincipal.getjMenuItemCalcularLucro().addActionListener(new ActionListener() {
+        
+        view.getjMenuItemIncluirProdutos().addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent ae){
+            public void actionPerformed(ActionEvent e) {
                 try{
-                    new CalculoMargemPrecoPresenter(produtoRepository);
+                    new ProdutoPresenter(produtoRepository, categoriaRepository, historicoRepository);
+                } catch(Exception ex){
+                    JOptionPane.showMessageDialog(view, "Falha: " + ex.getMessage());
                 }
-                catch(Exception e){
-                    JOptionPane.showMessageDialog(telaPrincipal, "Erro: Não foi possivel abrir a tela de calcular margem de produto - " + e.getMessage());
+            }
+        });
+        
+        view.getjMenuItemBuscarProdutos().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    new BuscaProdutoPresenter(produtoRepository, categoriaRepository, historicoRepository);
+                } catch(Exception ex){
+                    JOptionPane.showMessageDialog(view, "Falha: " + ex.getMessage());
+                }
+            }
+        });
+        
+        view.getjMenuItemCalcularLucro().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    new CalculoMargemPrecoPresenter(produtoRepository, historicoRepository);
+                } catch(Exception ex){
+                    JOptionPane.showMessageDialog(view, "Falha: " + ex.getMessage());
                 }
             }
         });
     }
 }
+
+

@@ -12,7 +12,6 @@ import br.ufes.repository.ProdutoRepository;
 import br.ufes.repository.UsuarioRepository;
 import br.ufes.service.CalculoPrecoService;
 import br.ufes.strategy.IPerfilUsuarioStrategy;
-import br.ufes.strategy.Perfis;
 import java.time.LocalDate;
 
 public class Seeder {
@@ -114,7 +113,6 @@ public class Seeder {
         cliente("Patrícia Almeida", "Rua Bela Vista, 64", "Bela Vista", "Guaçuí", "ES", 99.00);
     }
 
-    // todo cliente nasce PRATA (o proprio construtor de Cliente cuida disso)
     private Cliente cliente(String nome, String logradouro, String bairro, String cidade, String uf, double totalCompras) {
         Cliente cliente = new Cliente(nome, logradouro, bairro, cidade, uf);
         cliente.registrarCompra(totalCompras);
@@ -125,7 +123,7 @@ public class Seeder {
     // ---------- usuarios ----------
 
     private void criarUsuarios() {
-        // o primeiro usuario do sistema e o Administrador, habilitado e sem cliente associado
+
         usuario("Administrador do Sistema", "admin", "admin@pocdelivery.com", "admin123", Perfis.ADMINISTRADOR);
 
         usuario("Fernanda Alves", "fernanda", "fernanda@pocdelivery.com", "123456", Perfis.ATENDENTE);

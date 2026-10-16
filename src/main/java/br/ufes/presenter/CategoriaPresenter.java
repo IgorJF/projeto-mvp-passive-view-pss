@@ -2,31 +2,44 @@ package br.ufes.presenter;
 
 import br.ufes.model.Categoria;
 import br.ufes.repository.ICategoriaRepository;
+import br.ufes.repository.IProdutoRepository;
 import br.ufes.service.CategoriaService;
+import br.ufes.state.CategoriaState;
 import br.ufes.view.CategoriaView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import br.ufes.state.EdicaoCategoriaState;
+import br.ufes.state.VisualizacaoCategoriaState;
+
+//categoriaPresenter inicia a tela de categoria, no modo de visualizacao
+//ao clicar nos metodos respectivos das acoes, alterna entre os states de inclusao e edicao
+//botao salvar eh o responsavel por incluir a nova categoria e tambem editar uma categoria alterada, verificando se a categoria ja existe
+//metodo editar apenas seta na tela as informacoes da categoria selecionada
 
 public class CategoriaPresenter {
     private CategoriaView view;
     private Categoria categoria;
-    private ICategoriaRepository repository;
+    private ICategoriaRepository categoriaRepository;
     private CategoriaService categoriaService;
+    private CategoriaState modo;
     
-     public CategoriaPresenter(ICategoriaRepository repository){
-        this.repository = repository;
-        this.categoriaService = new CategoriaService(repository);
+    public CategoriaPresenter(ICategoriaRepository categoriaRepository, IProdutoRepository produtoRepository){
+        this.categoriaRepository = categoriaRepository;
+        this.categoriaService = new CategoriaService(categoriaRepository, produtoRepository);
         view = new CategoriaView();
+        setModo(new VisualizacaoCategoriaState(this));
         configuraView(); 
+    }
+    
+    //alterna entre os estados(states)
+    public void setModo(CategoriaState modo) {
+        this.modo = modo;
     }
 
     private void configuraView() {
         view.setVisible(false);
-        limparConteudoView();
-        listar();
-        modoVisualizacao();
         view.getBtnSalvar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -41,7 +54,7 @@ public class CategoriaPresenter {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                    modoInclusao();
+                    modo.novo();
                 } catch(Exception ex){
                     JOptionPane.showMessageDialog(view, "Falha: " + ex.getMessage());
                 }
@@ -81,7 +94,7 @@ public class CategoriaPresenter {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                    cancelar();
+                    modo.visualizar();
                 } catch(Exception ex){
                     JOptionPane.showMessageDialog(view, "Falha: " + ex.getMessage());
                 }
@@ -90,6 +103,8 @@ public class CategoriaPresenter {
         view.setVisible(true);
     }
     
+    //pega o que esta nas caixas de texto, caso nao tenha linha selecionada, considera que eh para criar uma nova
+    //caso tenha, chama editar
     private void salvar(){
         String nomeCategoria = view.getTxtNomeCategoria().getText(); 
         String textoPercentual = view.getTxtPercentualLucro().getText();
@@ -110,14 +125,12 @@ public class CategoriaPresenter {
         else {
             categoria = categoriaService.listar().get(linha);
             categoriaService.editar(categoria, nomeCategoria, percentualLucro);
-        }
-        
+        }       
         JOptionPane.showMessageDialog(view, "Categoria: " + nomeCategoria + " salva com sucesso");
-        limparConteudoView();
-        listar();
-        modoVisualizacao();
+        setModo(new VisualizacaoCategoriaState(this));
     }
     
+    //lista as cadastradas
     private void listar(){
         DefaultTableModel modelo = (DefaultTableModel) view.getTblCategoriasCadastradas().getModel();
         modelo.setRowCount(0);
@@ -126,7 +139,10 @@ public class CategoriaPresenter {
         }
     }
     
+    //alterna para o modo de edicao
+    //captura a linha selecionada acha o indice diretamente no repository e seta os valores nos campos de texto
     private void editar(){
+        setModo(new EdicaoCategoriaState(this));
         int linha = view.getTblCategoriasCadastradas().getSelectedRow(); 
         if (linha == -1) {
             throw new IllegalArgumentException("Selecione uma categoria na tabela para editar.");
@@ -134,33 +150,29 @@ public class CategoriaPresenter {
         Categoria categoriaLista = categoriaService.listar().get(linha);
         view.getTxtNomeCategoria().setText(categoriaLista.getNomeCategoria());
         view.getTxtPercentualLucro().setText(String.valueOf(categoriaLista.getPercentualLucro()));
-        modoInclusao();
     }
     
+    //pega a linha selecionada, acha no repository, verifica se tem produto cadastrado atraves do indice da categoria
     private void excluir(){
         int linha = view.getTblCategoriasCadastradas().getSelectedRow();
         if (linha == -1) {
             throw new IllegalArgumentException("Selecione uma categoria na tabela para excluir.");
         }
         Categoria categoriaLista = categoriaService.listar().get(linha);
+        categoriaService.validarExclusao(categoriaLista.getIdCategoria());
         int confirmacao = JOptionPane.showConfirmDialog(view, "Deseja realmente excluir a categoria " + categoriaLista.getNomeCategoria(), "Confirmacao de Exclusao", JOptionPane.YES_NO_OPTION);
         if (confirmacao == JOptionPane.YES_OPTION){
-            categoriaService.excluir(categoriaLista);
+            categoriaService.excluir(categoriaLista.getIdCategoria());
             JOptionPane.showMessageDialog(view, "Categoria: " + categoriaLista.getNomeCategoria() + " excluida com sucesso");
         } 
         else if(confirmacao == JOptionPane.NO_OPTION) {
             JOptionPane.showMessageDialog(view, "Exclusao cancelada");
         }
-        listar();
+        setModo(new VisualizacaoCategoriaState(this));
     }
     
     private void fechar(){
         view.dispose();
-    }
-    
-    private void cancelar(){
-        limparConteudoView();
-        modoVisualizacao();
     }
     
     public void modoInclusao(){
@@ -175,7 +187,21 @@ public class CategoriaPresenter {
         view.getBtnFechar().setEnabled(false);
     }
     
+    public void modoEdicao(){
+        view.getLblModo().setText("Modo: Edicao");
+        view.getTxtNomeCategoria().setEnabled(true);
+        view.getTxtPercentualLucro().setEnabled(true);
+        view.getBtnSalvar().setEnabled(true);
+        view.getBtnCancelar().setEnabled(true);
+        view.getBtnNovo().setEnabled(false);
+        view.getBtnEditar().setEnabled(false);
+        view.getBtnExcluir().setEnabled(false);
+        view.getBtnFechar().setEnabled(false);
+    }
+    
     public void modoVisualizacao(){
+        limparConteudoView();
+        listar();
         view.getLblModo().setText("Modo: Visualizacao");
         view.getTxtNomeCategoria().setEnabled(false);
         view.getTxtPercentualLucro().setEnabled(false);
