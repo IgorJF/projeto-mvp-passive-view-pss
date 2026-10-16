@@ -9,10 +9,6 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-/**
- *
- * @author igor
- */
 public class CategoriaView extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CategoriaView.class.getName());

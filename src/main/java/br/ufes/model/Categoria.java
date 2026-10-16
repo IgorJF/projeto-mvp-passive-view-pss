@@ -1,35 +1,35 @@
 package br.ufes.model;
 
-public class Categoria {
-    private int id;
+public class Categoria{
+    private int idCategoria;
     private String nomeCategoria;
     private double percentualLucro;
     
     public Categoria(String nomeCategoria, double percentualLucro){
-        if(nomeCategoria == null || nomeCategoria.isBlank() || nomeCategoria.isEmpty()){
-            throw new IllegalArgumentException("Informa um nome valido para a categoria");
+        if(nomeCategoria.isBlank()){
+            throw new IllegalArgumentException("Nome de categoria nao pode ser vazio");
         }
-        if(percentualLucro <= 0){
-            throw new IllegalArgumentException("O preco deve ser maior que zero");
+        if(percentualLucro < 0){
+            throw new IllegalArgumentException("Percentual de lucro nao pode ser menor que zero");
         }
         this.nomeCategoria = nomeCategoria;
         this.percentualLucro = percentualLucro;
     }
-
-    public int getId() {
-        return id;
+    
+    public int getIdCategoria(){
+        return idCategoria;
     }
     
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNomeCategoria() {
+    public String getNomeCategoria(){
         return nomeCategoria;
     }
 
     public double getPercentualLucro() {
         return percentualLucro;
+    }
+
+    public void setIdCategoria(int idCategoria) {
+        this.idCategoria = idCategoria;
     }
 
     public void setNomeCategoria(String nomeCategoria) {
@@ -38,9 +38,8 @@ public class Categoria {
 
     public void setPercentualLucro(double percentualLucro) {
         this.percentualLucro = percentualLucro;
-    }
+    } 
     
-    @Override
     public String toString(){
         return nomeCategoria;
     }

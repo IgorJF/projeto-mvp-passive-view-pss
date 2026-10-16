@@ -9,10 +9,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 
-/**
- *
- * @author ana-luiza
- */
 public class ProdutoHistoricoView extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ProdutoHistoricoView.class.getName());

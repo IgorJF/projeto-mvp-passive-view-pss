@@ -2,47 +2,66 @@ package br.ufes.repository;
 
 import br.ufes.model.Produto;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-/**
- *
- * @author igor
- */
-public class ProdutoRepository implements IProdutoRepository {
+public class ProdutoRepository implements IProdutoRepository{
     private List<Produto> produtos;
-    private int idContador;
+    private int contadorId;
     
     public ProdutoRepository(){
         produtos = new ArrayList<>();
-        idContador = 1;
+        contadorId = 0;
     }
     
+    @Override
+    public Produto buscarPorId(int id){
+        for (Produto produto : produtos) {
+            if (produto.getIdProduto() == id) {
+                return produto;
+            }
+        }
+        return null;
+    }
+
     @Override
     public void salvar(Produto produto){
         if(produto == null){
-            throw new IllegalArgumentException("Produto não é valido");
+            throw new IllegalArgumentException("Produto nao pode ser nula");
         }
-        if (produto.getId() == 0) {
-            existe(produto.getNomeProduto());
-            produto.setId(idContador++);
-            produtos.add(produto);
+        produto.setIdProduto(contadorId);
+        produtos.add(produto);
+        contadorId++;  
+    }
+
+    @Override
+    public void excluir(Produto produto){
+        if(produto == null){
+            throw new IllegalArgumentException("Produto nao pode ser nulo");
         }
-        for (int i = 0; i < produtos.size(); i++) {
-            if (produtos.get(i).getId() == produto.getId()) {
-                produtos.set(i, produto);
+        Iterator<Produto> it = produtos.iterator();
+        while(it.hasNext()) {
+            Produto produtoAtual = it.next();
+            if (produtoAtual.getIdProduto() == produto.getIdProduto()) {
+                it.remove();
             }
         }
     }
-    
+
     @Override
-    public List<Produto> listar() {
+    public List<Produto> listar(){
         return produtos;
     }
-    
-    private void existe(String nomeProduto){
-         for(Produto produto : produtos){
-            if(produto.getNomeProduto().equalsIgnoreCase(nomeProduto)){
-                throw new RuntimeException("O produto com nome de " + nomeProduto + " ja existe");
+
+    @Override
+    public void editar(Produto produto){
+        if(produto == null){
+            throw new IllegalArgumentException("produto nao pode ser nula");
+        }
+        for (int i = 0; i < produtos.size(); i++) {
+            Produto produtoSelecionado = produtos.get(i);
+            if (produtoSelecionado.getIdProduto() == produto.getIdProduto()) {
+                produtos.set(i, produto);
             }
         }
     }

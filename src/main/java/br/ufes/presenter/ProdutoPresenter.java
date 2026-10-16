@@ -3,8 +3,11 @@ package br.ufes.presenter;
 import br.ufes.model.Categoria;
 import br.ufes.model.Produto;
 import br.ufes.repository.ICategoriaRepository;
+import br.ufes.repository.IHistoricoPrecoRepository;
 import br.ufes.repository.IProdutoRepository;
 import br.ufes.service.ProdutoService;
+import br.ufes.state.InclusaoProdutoState;
+import br.ufes.state.ProdutoState;
 import br.ufes.view.ProdutoView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,14 +18,22 @@ public class ProdutoPresenter {
     private Produto produto;
     private IProdutoRepository repositoryProduto;
     private ICategoriaRepository repositoryCategoria;
+    private IHistoricoPrecoRepository repositoryHistorico;
     private ProdutoService produtoService;
+    private ProdutoState modo;
 
-    public ProdutoPresenter(IProdutoRepository repositoryProduto, ICategoriaRepository repositoryCategoria){
+    public ProdutoPresenter(IProdutoRepository repositoryProduto, ICategoriaRepository repositoryCategoria, IHistoricoPrecoRepository repositoryHistorico){
         this.repositoryProduto = repositoryProduto;
         this.repositoryCategoria = repositoryCategoria;
-        this.produtoService = new ProdutoService(repositoryProduto);
+        this.repositoryHistorico = repositoryHistorico;
+        this.produtoService = new ProdutoService(repositoryProduto, repositoryCategoria, repositoryHistorico);
         this.view = new ProdutoView();
+        setModo(new InclusaoProdutoState(this));
         configuraView();
+    }
+    
+    public void setModo(ProdutoState modo){
+        this.modo = modo;
     }
 
     private void configuraView(){
@@ -57,7 +68,7 @@ public class ProdutoPresenter {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                    modoEdicao();
+                    modo.editar();
                 }
                 catch(Exception ex){
                     JOptionPane.showMessageDialog(view, "Falha: " + ex.getMessage());
@@ -77,15 +88,28 @@ public class ProdutoPresenter {
             }
         });
 
-        modoInclusao();
         view.setDefaultCloseOperation(ProdutoView.DISPOSE_ON_CLOSE);
         view.setVisible(true);
     }
 
     public void visualizar(Produto produto){
         this.produto = produto;
-        carregarDadosProduto();
-        modoVisualizacao();
+        modo.visualizar();
+    }
+    
+    private void listarCategorias() {
+        view.getCmbCategoriaProduto().removeAllItems();
+        for (Categoria categoria : repositoryCategoria.listar()) {
+            view.getCmbCategoriaProduto().addItem(categoria);
+        }
+    }
+
+    private void visualizarHistorico(){
+        new ProdutoHistoricoPresenter(produto, repositoryHistorico);
+    }
+
+    public void fechar(){
+        view.dispose();
     }
 
     private void salvar(){
@@ -103,32 +127,31 @@ public class ProdutoPresenter {
             throw new IllegalArgumentException("Uma categoria deve ser selecionada.");
         }
 
-        double precoCusto = Double.parseDouble(textoPrecoCusto.replace(",", "."));
+        double precoCusto;
+        try{
+            precoCusto = Double.parseDouble(textoPrecoCusto.trim().replace(",", "."));
+        }
+        catch(NumberFormatException ex){
+            throw new IllegalArgumentException("Preco de custo invalido. Informe apenas numeros, por exemplo 12,50.");
+        }
 
         if(produto == null){
             produtoService.salvar(nomeProduto, precoCusto, categoriaProduto);
             JOptionPane.showMessageDialog(view, "Produto: " + nomeProduto + " salvo com sucesso");
-            fechar();
+            modo.novo();
         }
         else{
             produtoService.editar(produto, nomeProduto, precoCusto, categoriaProduto);
             JOptionPane.showMessageDialog(view, "Produto: " + nomeProduto + " salvo com sucesso");
-            carregarDadosProduto();
-            modoVisualizacao();
+            modo.visualizar();
         }
     }
 
     private void cancelar(){
-        if(produto == null){
-            fechar();
-        }
-        else{
-            carregarDadosProduto();
-            modoVisualizacao();
-        }
+        modo.cancelar();
     }
 
-    private void modoInclusao(){
+    public void modoInclusao(){
         view.getLblModo().setText("Modo: Inclusão");
         limparConteudoView();
         habilitarCampos(true);
@@ -138,7 +161,7 @@ public class ProdutoPresenter {
         view.getBtnHistorico().setVisible(false);
     }
 
-    private void modoEdicao(){
+    public void modoEdicao(){
         view.getLblModo().setText("Modo: Edição");
         habilitarCampos(true);
         view.getBtnEditar().setVisible(false);
@@ -147,13 +170,14 @@ public class ProdutoPresenter {
         view.getBtnHistorico().setVisible(false);
     }
 
-    private void modoVisualizacao(){
+    public void modoVisualizacao(){
         view.getLblModo().setText("Modo: Visualização");
         habilitarCampos(false);
         view.getBtnEditar().setVisible(true);
         view.getBtnSalvar().setVisible(false);
         view.getBtnCancelar().setVisible(false);
         view.getBtnHistorico().setVisible(true);
+        carregarDadosProduto();
     }
 
     private void habilitarCampos(boolean habilitado){
@@ -168,21 +192,6 @@ public class ProdutoPresenter {
         view.getCmbCategoriaProduto().setSelectedItem(produto.getCategoria());
         view.getTxtMargemLucro().setText(String.format("%.2f%%", produto.getMargemLucro()));
         view.getTxtPrecoVenda().setText(String.format("%.2f", produto.getPrecoVenda()));
-    }
-
-    private void listarCategorias(){
-        view.getCmbCategoriaProduto().removeAllItems();
-        for (Categoria categoria : repositoryCategoria.listar()) {
-            view.getCmbCategoriaProduto().addItem(categoria);
-        }
-    }
-
-    private void visualizarHistorico(){
-        new ProdutoHistoricoPresenter(produto);
-    }
-
-    private void fechar(){
-        view.dispose();
     }
 
     private void limparConteudoView(){

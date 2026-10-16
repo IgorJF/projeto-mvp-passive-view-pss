@@ -2,6 +2,7 @@ package br.ufes.presenter;
 
 import br.ufes.model.HistoricoPreco;
 import br.ufes.model.Produto;
+import br.ufes.repository.IHistoricoPrecoRepository;
 import br.ufes.view.ProdutoHistoricoView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,10 +13,12 @@ import javax.swing.table.DefaultTableModel;
 public class ProdutoHistoricoPresenter {
     private ProdutoHistoricoView view;
     private Produto produto;
+    private IHistoricoPrecoRepository historicoRepository;
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-    public ProdutoHistoricoPresenter(Produto produto) {
+    public ProdutoHistoricoPresenter(Produto produto, IHistoricoPrecoRepository historicoRepository) {
         this.produto = produto;
+        this.historicoRepository = historicoRepository;
         this.view = new ProdutoHistoricoView();
         configuraView();
     }
@@ -34,6 +37,7 @@ public class ProdutoHistoricoPresenter {
                 }
             }
         });
+        view.setDefaultCloseOperation(ProdutoHistoricoView.DISPOSE_ON_CLOSE);
         view.setVisible(true);
     }
 
@@ -47,11 +51,14 @@ public class ProdutoHistoricoPresenter {
     }
 
     private void listar() {
-        DefaultTableModel modelo =(DefaultTableModel) view.getTblHistorico().getModel();
+        DefaultTableModel modelo = (DefaultTableModel) view.getTblHistorico().getModel();
         modelo.setRowCount(0);
-        HistoricoPreco historico = produto.getHistoricoPreco();
-        for (int i = 0; i < historico.getPrecos().size(); i++) {
-            modelo.addRow(new Object[]{historico.getDatas().get(i).format(formatter),produto.getMargemLucro(),historico.getPrecos().get(i)});
+        for (HistoricoPreco historico : historicoRepository.listarPorProduto(produto)) {
+            modelo.addRow(new Object[]{
+                historico.getData().format(formatter),
+                historico.getPercentualLucro(),
+                historico.getPrecoVenda()
+            });
         }
     }
 

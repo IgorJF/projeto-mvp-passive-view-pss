@@ -1,44 +1,54 @@
 package br.ufes.model;
 
-/**
- *
- * @author igorj
- */
+import br.ufes.strategy.IPerfilUsuarioStrategy;
+
 public class Usuario {
-    private int id;
-    private String nomeCompleto;
-    private String email;
+    private String nome;
     private String nomeUsuario;
+    private String email;
     private String senha;
+    private IPerfilUsuarioStrategy perfil;
+    private boolean status;
+    private Cliente clienteAssociado = null;
 
-    public Usuario(String nomeCompleto, String email, String nomeUsuario, String senha){
-        this.nomeCompleto = nomeCompleto;
-        this.email = email;
+    public Usuario(String nome, String nomeUsuario, String email, String senha, IPerfilUsuarioStrategy perfil, boolean status) {
+        this.nome = nome;
         this.nomeUsuario = nomeUsuario;
+        this.email = email;
         this.senha = senha;
+        this.perfil = perfil;
+        this.status = status;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNomeCompleto() {
-        return nomeCompleto;
-    }
-
-    public String getEmail() {
-        return email;
+    public String getNome() {
+        return nome;
     }
 
     public String getNomeUsuario() {
         return nomeUsuario;
     }
 
-    public String getSenha() {
-        return senha;
+    public String getEmail() {
+        return email;
     }
+
+    public IPerfilUsuarioStrategy getPerfil() {
+        return perfil;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public Cliente getClienteAssociado() {
+        return clienteAssociado;
+    }
+    
+    public void setClienteAssociado(Cliente cliente) {
+        this.clienteAssociado = cliente;
+    }
+    
+    public boolean autenticarSenha(String senha) {
+        return this.senha.equals(senha);
+    } 
 }

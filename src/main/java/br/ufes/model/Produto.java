@@ -1,29 +1,34 @@
 package br.ufes.model;
 
-import br.ufes.repository.IHistoricoPrecoRepository;
-
 public class Produto {
-    private int id;
+    private int idProduto;
     private String nomeProduto;
     private double precoCusto;
     private Categoria categoria;
     private double margemLucro;
     private double precoVenda;
-    private HistoricoPreco historicoPreco;
-    
+
     public Produto(String nomeProduto, double precoCusto, Categoria categoria){
+        if(nomeProduto.isBlank()){
+            throw new IllegalArgumentException("Nome de de produto nao pode ser vazio");
+        }
+        if(precoCusto < 0){
+            throw new IllegalArgumentException("Preco de custo deve ser maior que zero");
+        }
+        if(categoria == null){
+            throw new IllegalArgumentException("Categoria nao pode ser nulo");
+        }
         this.nomeProduto = nomeProduto;
         this.precoCusto = precoCusto;
         this.categoria = categoria;
-        this.historicoPreco = new HistoricoPreco();
     }
 
-    public int getId() {
-        return id;
+    public int getIdProduto() {
+        return idProduto;
     }
     
-    public void setId(int id){
-        this.id = id;
+    public void setIdProduto(int id){
+        this.idProduto = id;
     }
 
     public String getNomeProduto() {
@@ -64,10 +69,6 @@ public class Produto {
 
     public void setPrecoVenda(double precoVenda) {
         this.precoVenda = precoVenda;
-    }
-    
-     public HistoricoPreco getHistoricoPreco() {
-        return historicoPreco;
     }
 }
 

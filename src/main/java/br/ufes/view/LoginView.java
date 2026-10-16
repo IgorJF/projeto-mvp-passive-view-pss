@@ -1,23 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package br.ufes.view;
 
 import javax.swing.JButton;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 /**
  *
- * @author ana-luiza
+ * @author igorj
  */
 public class LoginView extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(LoginView.class.getName());
 
     /**
-     * Creates new form LoginView
+     * Creates new form UsuarioView
      */
     public LoginView() {
         initComponents();
@@ -32,74 +27,87 @@ public class LoginView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblAcessoAoSistema = new javax.swing.JLabel();
-        lblUsuarioOuEmail = new javax.swing.JLabel();
-        txtUsuarioOuEmail = new javax.swing.JTextField();
-        lblSenha = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
+        txtSenha = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
+        lblTitulo1 = new javax.swing.JLabel();
+        lblTitulo2 = new javax.swing.JLabel();
         btnEntrar = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
-        txtSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblAcessoAoSistema.setText("Acesso ao Sistema");
+        lblTitulo.setText("Autenticação ao Sistema");
 
-        lblUsuarioOuEmail.setText("Usuario ou e-mail:");
+        lblTitulo1.setText("Usuário ou E-mail:");
 
-        lblSenha.setText("Senha:");
+        lblTitulo2.setText("Senha:");
 
         btnEntrar.setText("Entrar");
 
         btnFechar.setText("Fechar");
-        btnFechar.addActionListener(this::btnFecharActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(41, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTitulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblSenha)
-                            .addComponent(lblUsuarioOuEmail)
-                            .addComponent(lblAcessoAoSistema)
-                            .addComponent(txtUsuarioOuEmail)
-                            .addComponent(txtSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)))
+                        .addGap(138, 138, 138)
+                        .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(172, 172, 172)
+                        .addGap(140, 140, 140)
                         .addComponent(btnEntrar)
-                        .addGap(26, 26, 26)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnFechar)))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(41, Short.MAX_VALUE)
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(27, 27, 27)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(lblAcessoAoSistema)
-                .addGap(33, 33, 33)
-                .addComponent(lblUsuarioOuEmail)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtUsuarioOuEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(lblSenha)
+                .addGap(35, 35, 35)
+                .addComponent(lblTitulo)
+                .addGap(18, 18, 18)
+                .addComponent(lblTitulo1)
+                .addGap(41, 41, 41)
+                .addComponent(lblTitulo2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEntrar)
                     .addComponent(btnFechar))
-                .addGap(26, 26, 26))
+                .addContainerGap(25, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(91, 91, 91)
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(123, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    public JTextField getTxtSenha() {
+        return txtSenha;
+    }
 
-    private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnFecharActionPerformed
+    public JTextField getTxtUsuario() {
+        return txtUsuario;
+    }
 
     public JButton getBtnEntrar() {
         return btnEntrar;
@@ -108,24 +116,13 @@ public class LoginView extends javax.swing.JFrame {
     public JButton getBtnFechar() {
         return btnFechar;
     }
-
-    public JPasswordField getTxtSenha() {
-        return txtSenha;
-    }
-
-    public JTextField getTxtUsuarioOuEmail() {
-        return txtUsuarioOuEmail;
-    }
-
-    
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEntrar;
     private javax.swing.JButton btnFechar;
-    private javax.swing.JLabel lblAcessoAoSistema;
-    private javax.swing.JLabel lblSenha;
-    private javax.swing.JLabel lblUsuarioOuEmail;
-    private javax.swing.JPasswordField txtSenha;
-    private javax.swing.JTextField txtUsuarioOuEmail;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblTitulo1;
+    private javax.swing.JLabel lblTitulo2;
+    private javax.swing.JTextField txtSenha;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

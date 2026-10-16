@@ -8,10 +8,6 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 
-/**
- *
- * @author igorj
- */
 public class CalculoMargemPrecoView extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CalculoMargemPrecoView.class.getName());
