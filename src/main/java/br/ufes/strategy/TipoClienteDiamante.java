@@ -11,7 +11,7 @@ public class TipoClienteDiamante extends TipoCliente {
 
     @Override
     public String tipoAtualCliente() {
-        return "Diamanete";
+        return "Diamante";
     }
 
 }

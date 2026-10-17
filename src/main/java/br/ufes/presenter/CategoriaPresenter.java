@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import br.ufes.state.EdicaoCategoriaState;
 import br.ufes.state.VisualizacaoCategoriaState;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 //categoriaPresenter inicia a tela de categoria, no modo de visualizacao
 //ao clicar nos metodos respectivos das acoes, alterna entre os states de inclusao e edicao

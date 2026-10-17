@@ -4,12 +4,14 @@
  */
 package br.ufes.view;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 public class TelaPrincipal extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaPrincipal.class.getName());
 
     /**
@@ -28,32 +30,106 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblUsuario = new javax.swing.JLabel();
+        lblPedidosAndamento = new javax.swing.JLabel();
+        lblPedidosEntregues = new javax.swing.JLabel();
+        lblTotalVendas = new javax.swing.JLabel();
+        lblAcessoRapido = new javax.swing.JLabel();
+        btnNovoPedido = new javax.swing.JButton();
+        btnNovoCliente = new javax.swing.JButton();
+        btnNovoProduto = new javax.swing.JButton();
+        btnBuscarPedidos = new javax.swing.JButton();
+        lblTitulo = new javax.swing.JLabel();
+        btnBuscarClientes = new javax.swing.JButton();
+        btnAcompanharEntregas = new javax.swing.JButton();
+        lblEntregadoresAtivos = new javax.swing.JLabel();
         jMenuBarPrincipal = new javax.swing.JMenuBar();
+        jMenuOperacao = new javax.swing.JMenu();
+        jMenuItemCalcularLucro = new javax.swing.JMenuItem();
+        jMenuItemSair = new javax.swing.JMenuItem();
         jMenuDados = new javax.swing.JMenu();
+        jMenuProdutos = new javax.swing.JMenu();
         jMenuItemIncluirProdutos = new javax.swing.JMenuItem();
         jMenuItemBuscarProdutos = new javax.swing.JMenuItem();
         jMenuItemCategorias = new javax.swing.JMenuItem();
-        jMenuItemCalcularLucro = new javax.swing.JMenuItem();
+        jMenuItemClientes = new javax.swing.JMenuItem();
+        jMenuItemEntregadores = new javax.swing.JMenuItem();
+        jMenuItemTaxasEntrega = new javax.swing.JMenuItem();
+        jMenuUsuarios = new javax.swing.JMenu();
+        jMenuItemManterUsuarios = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("POC Delivery");
+
+        lblUsuario.setText("Usuário:");
+
+        lblPedidosAndamento.setText("Pedidos em Andamento:");
+
+        lblPedidosEntregues.setText("Pedidos entregues hoje;");
+
+        lblTotalVendas.setText("Total em vendas:");
+
+        lblAcessoRapido.setText("Acesso rápido");
+
+        btnNovoPedido.setText("Novo Pedido");
+
+        btnNovoCliente.setText("Novo Cliente");
+
+        btnNovoProduto.setText("Novo Produto");
+
+        btnBuscarPedidos.setText("Buscar Pedidos");
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        lblTitulo.setText("Bem Vindo ao POC Delivery");
+
+        btnBuscarClientes.setText("Buscar Clientes");
+
+        btnAcompanharEntregas.setText("Acompanhar Entregas");
+
+        lblEntregadoresAtivos.setText("Entregadores ativos:");
+
+        jMenuOperacao.setText("Operação");
+
+        jMenuItemCalcularLucro.setText("Calcular margem de lucro");
+        jMenuOperacao.add(jMenuItemCalcularLucro);
+
+        jMenuItemSair.setText("Sair");
+        jMenuOperacao.add(jMenuItemSair);
+
+        jMenuBarPrincipal.add(jMenuOperacao);
 
         jMenuDados.setText("Dados");
 
-        jMenuItemIncluirProdutos.setText("Incluir Produtos");
-        jMenuItemIncluirProdutos.addActionListener(this::jMenuItemIncluirProdutosActionPerformed);
-        jMenuDados.add(jMenuItemIncluirProdutos);
+        jMenuProdutos.setText("Produtos");
 
-        jMenuItemBuscarProdutos.setText("Buscar Produtos");
-        jMenuDados.add(jMenuItemBuscarProdutos);
+        jMenuItemIncluirProdutos.setText("Incluir produtos");
+        jMenuProdutos.add(jMenuItemIncluirProdutos);
+
+        jMenuItemBuscarProdutos.setText("Buscar produtos");
+        jMenuProdutos.add(jMenuItemBuscarProdutos);
+
+        jMenuDados.add(jMenuProdutos);
 
         jMenuItemCategorias.setText("Categorias");
         jMenuDados.add(jMenuItemCategorias);
 
-        jMenuItemCalcularLucro.setText("Calcular Margem de Lucro");
-        jMenuItemCalcularLucro.setToolTipText("");
-        jMenuDados.add(jMenuItemCalcularLucro);
+        jMenuItemClientes.setText("Clientes");
+        jMenuDados.add(jMenuItemClientes);
+
+        jMenuItemEntregadores.setText("Entregadores");
+        jMenuDados.add(jMenuItemEntregadores);
+
+        jMenuItemTaxasEntrega.setText("Taxas de entrega");
+        jMenuDados.add(jMenuItemTaxasEntrega);
 
         jMenuBarPrincipal.add(jMenuDados);
+
+        jMenuUsuarios.setText("Usuários");
+
+        jMenuItemManterUsuarios.setText("Manter usuários");
+        jMenuUsuarios.add(jMenuItemManterUsuarios);
+
+        jMenuBarPrincipal.add(jMenuUsuarios);
 
         setJMenuBar(jMenuBarPrincipal);
 
@@ -61,19 +137,62 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblEntregadoresAtivos)
+                    .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUsuario)
+                    .addComponent(lblTotalVendas)
+                    .addComponent(lblPedidosAndamento)
+                    .addComponent(lblPedidosEntregues)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnBuscarClientes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                            .addComponent(lblAcessoRapido, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnNovoPedido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnNovoProduto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnBuscarPedidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnNovoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAcompanharEntregas))))
+                .addContainerGap(158, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(lblTitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblUsuario)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addComponent(lblPedidosAndamento)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblPedidosEntregues)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTotalVendas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblEntregadoresAtivos)
+                .addGap(36, 36, 36)
+                .addComponent(lblAcessoRapido)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNovoPedido)
+                    .addComponent(btnBuscarPedidos))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNovoProduto)
+                    .addComponent(btnNovoCliente))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBuscarClientes)
+                    .addComponent(btnAcompanharEntregas))
+                .addGap(145, 145, 145))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItemIncluirProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemIncluirProdutosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItemIncluirProdutosActionPerformed
 
     public JMenuBar getjMenuBarPrincipal() {
         return jMenuBarPrincipal;
@@ -81,6 +200,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     public JMenu getjMenuDados() {
         return jMenuDados;
+    }
+
+    public JMenu getjMenuOperacao() {
+        return jMenuOperacao;
+    }
+
+    public JMenu getjMenuProdutos() {
+        return jMenuProdutos;
+    }
+
+    public JMenu getjMenuUsuarios() {
+        return jMenuUsuarios;
     }
 
     public JMenuItem getjMenuItemBuscarProdutos() {
@@ -95,16 +226,100 @@ public class TelaPrincipal extends javax.swing.JFrame {
         return jMenuItemCategorias;
     }
 
-    //foi necessario pesquisar qual elemento era
+    public JMenuItem getjMenuItemClientes() {
+        return jMenuItemClientes;
+    }
+
+    public JMenuItem getjMenuItemEntregadores() {
+        return jMenuItemEntregadores;
+    }
+
     public JMenuItem getjMenuItemIncluirProdutos() {
         return jMenuItemIncluirProdutos;
     }
+
+    public JMenuItem getjMenuItemManterUsuarios() {
+        return jMenuItemManterUsuarios;
+    }
+
+    public JMenuItem getjMenuItemSair() {
+        return jMenuItemSair;
+    }
+
+    public JMenuItem getjMenuItemTaxasEntrega() {
+        return jMenuItemTaxasEntrega;
+    }
+
+    public JButton getBtnAcompanharEntregas() {
+        return btnAcompanharEntregas;
+    }
+
+    public JButton getBtnBuscarClientes() {
+        return btnBuscarClientes;
+    }
+
+    public JButton getBtnBuscarPedidos() {
+        return btnBuscarPedidos;
+    }
+
+    public JButton getBtnNovoCliente() {
+        return btnNovoCliente;
+    }
+
+    public JButton getBtnNovoPedido() {
+        return btnNovoPedido;
+    }
+
+    public JButton getBtnNovoProduto() {
+        return btnNovoProduto;
+    }
+
+    public JLabel getLblEntregadoresAtivos() {
+        return lblEntregadoresAtivos;
+    }
+
+    public JLabel getLblPedidosAndamento() {
+        return lblPedidosAndamento;
+    }
+
+    public JLabel getLblPedidosEntregues() {
+        return lblPedidosEntregues;
+    }
+
+    public JLabel getLblTotalVendas() {
+        return lblTotalVendas;
+    }
+    
+    public JLabel getLblUsuario() {
+        return lblUsuario;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAcompanharEntregas;
+    private javax.swing.JButton btnBuscarClientes;
+    private javax.swing.JButton btnBuscarPedidos;
+    private javax.swing.JButton btnNovoCliente;
+    private javax.swing.JButton btnNovoPedido;
+    private javax.swing.JButton btnNovoProduto;
     private javax.swing.JMenuBar jMenuBarPrincipal;
     private javax.swing.JMenu jMenuDados;
     private javax.swing.JMenuItem jMenuItemBuscarProdutos;
     private javax.swing.JMenuItem jMenuItemCalcularLucro;
     private javax.swing.JMenuItem jMenuItemCategorias;
+    private javax.swing.JMenuItem jMenuItemClientes;
+    private javax.swing.JMenuItem jMenuItemEntregadores;
     private javax.swing.JMenuItem jMenuItemIncluirProdutos;
+    private javax.swing.JMenuItem jMenuItemManterUsuarios;
+    private javax.swing.JMenuItem jMenuItemSair;
+    private javax.swing.JMenuItem jMenuItemTaxasEntrega;
+    private javax.swing.JMenu jMenuOperacao;
+    private javax.swing.JMenu jMenuProdutos;
+    private javax.swing.JMenu jMenuUsuarios;
+    private javax.swing.JLabel lblAcessoRapido;
+    private javax.swing.JLabel lblEntregadoresAtivos;
+    private javax.swing.JLabel lblPedidosAndamento;
+    private javax.swing.JLabel lblPedidosEntregues;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblTotalVendas;
+    private javax.swing.JLabel lblUsuario;
     // End of variables declaration//GEN-END:variables
 }

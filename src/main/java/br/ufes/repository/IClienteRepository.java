@@ -6,7 +6,7 @@ import java.util.List;
 public interface IClienteRepository {
     void salvar(Cliente cliente);
     List<Cliente> listar();
-    Cliente buscarPorNome(String nomeCliente);
+    Cliente buscarPorId(int id);
     void editar(Cliente cliente);
     void excluir(Cliente cliente);
 }
