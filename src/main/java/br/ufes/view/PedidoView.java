@@ -1,5 +1,11 @@
 package br.ufes.view;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 /**
  *
  * @author igorj
@@ -50,13 +56,13 @@ public class PedidoView extends javax.swing.JFrame {
         txtDescontoTaxaEntrega = new javax.swing.JTextField();
         txtTaxaEntregaFinal = new javax.swing.JTextField();
         btnDetalhes = new javax.swing.JButton();
-        lblTaxaEntregaFinal1 = new javax.swing.JLabel();
+        lblCupomDesconto = new javax.swing.JLabel();
         txtCupomDesconto = new javax.swing.JTextField();
         btnAplicarCupom = new javax.swing.JButton();
         lblTaxaEntregaFinal2 = new javax.swing.JLabel();
         btnRemoverCupom = new javax.swing.JButton();
         txtCupomAplicado = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        lblTotalPedido = new javax.swing.JLabel();
         jTotalPedido = new javax.swing.JTextField();
         btnCalcularValor = new javax.swing.JButton();
         btnPagarPedido = new javax.swing.JButton();
@@ -97,7 +103,7 @@ public class PedidoView extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Integer.class, java.lang.Double.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.Double.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -126,7 +132,7 @@ public class PedidoView extends javax.swing.JFrame {
 
         btnDetalhes.setText("Detalhes");
 
-        lblTaxaEntregaFinal1.setText("Cupom de Desconto:");
+        lblCupomDesconto.setText("Cupom de Desconto:");
 
         btnAplicarCupom.setText("Aplicar Cupom");
 
@@ -136,8 +142,8 @@ public class PedidoView extends javax.swing.JFrame {
 
         txtCupomAplicado.setEditable(false);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Total Pedido:");
+        lblTotalPedido.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblTotalPedido.setText("Total Pedido:");
 
         jTotalPedido.setEditable(false);
         jTotalPedido.addActionListener(this::jTotalPedidoActionPerformed);
@@ -147,6 +153,7 @@ public class PedidoView extends javax.swing.JFrame {
         btnPagarPedido.setText("Pagar Pedido");
 
         btnFechar.setText("Fechar");
+        btnFechar.setToolTipText("");
         btnFechar.addActionListener(this::btnFecharActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -200,7 +207,7 @@ public class PedidoView extends javax.swing.JFrame {
                                     .addComponent(txtTaxaEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblTaxaEntregaFinal1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblCupomDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblTaxaEntregaFinal2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addGroup(layout.createSequentialGroup()
@@ -225,7 +232,7 @@ public class PedidoView extends javax.swing.JFrame {
                                     .addComponent(btnRemoverCupom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnAplicarCupom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblTotalPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jTotalPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -287,7 +294,7 @@ public class PedidoView extends javax.swing.JFrame {
                                     .addComponent(txtTaxaEntregaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(19, 19, 19)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblTaxaEntregaFinal1)
+                                    .addComponent(lblCupomDesconto)
                                     .addComponent(txtCupomDesconto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -300,7 +307,7 @@ public class PedidoView extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnRemoverCupom)))))
                 .addGap(13, 13, 13)
-                .addComponent(jLabel1)
+                .addComponent(lblTotalPedido)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTotalPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -323,30 +330,83 @@ public class PedidoView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnFecharActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new PedidoView().setVisible(true));
+    public JButton getBtnAdicionar() {
+        return btnAdicionar;
     }
+
+    public JButton getBtnAplicarCupom() {
+        return btnAplicarCupom;
+    }
+
+    public JButton getBtnCalcularValor() {
+        return btnCalcularValor;
+    }
+
+    public JButton getBtnDetalhes() {
+        return btnDetalhes;
+    }
+
+    public JButton getBtnFechar() {
+        return btnFechar;
+    }
+
+    public JButton getBtnPagarPedido() {
+        return btnPagarPedido;
+    }
+
+    public JButton getBtnRemoverCupom() {
+        return btnRemoverCupom;
+    }
+
+    public JComboBox<String> getCmbCliente() {
+        return cmbCliente;
+    }
+
+    public JComboBox<String> getCmbProdutos() {
+        return cmbProdutos;
+    }
+
+    public JTable getTblProdutos() {
+        return tblProdutos;
+    }
+
+    public JTextField getTxtCupomAplicado() {
+        return txtCupomAplicado;
+    }
+
+    public JTextField getTxtCupomDesconto() {
+        return txtCupomDesconto;
+    }
+
+    public JTextField getTxtData() {
+        return txtData;
+    }
+
+    public JTextField getTxtDescontoTaxaEntrega() {
+        return txtDescontoTaxaEntrega;
+    }
+
+    public JTextArea getTxtEndereco() {
+        return txtEndereco;
+    }
+
+    public JTextField getTxtNumeroPedido() {
+        return txtNumeroPedido;
+    }
+
+    public JTextField getTxtTaxaEntrega() {
+        return txtTaxaEntrega;
+    }
+
+    public JTextField getTxtTaxaEntregaFinal() {
+        return txtTaxaEntregaFinal;
+    }
+
+    public JTextField getTxtValorPedido() {
+        return txtValorPedido;
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionar;
@@ -358,11 +418,11 @@ public class PedidoView extends javax.swing.JFrame {
     private javax.swing.JButton btnRemoverCupom;
     private javax.swing.JComboBox<String> cmbCliente;
     private javax.swing.JComboBox<String> cmbProdutos;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTotalPedido;
     private javax.swing.JLabel lblCliente;
+    private javax.swing.JLabel lblCupomDesconto;
     private javax.swing.JLabel lblDados;
     private javax.swing.JLabel lblData;
     private javax.swing.JLabel lblDescontoTaxaEntrega;
@@ -373,8 +433,8 @@ public class PedidoView extends javax.swing.JFrame {
     private javax.swing.JLabel lblResumo;
     private javax.swing.JLabel lblTaxaEntrega;
     private javax.swing.JLabel lblTaxaEntregaFinal;
-    private javax.swing.JLabel lblTaxaEntregaFinal1;
     private javax.swing.JLabel lblTaxaEntregaFinal2;
+    private javax.swing.JLabel lblTotalPedido;
     private javax.swing.JLabel lblValorPedido;
     private javax.swing.JTable tblProdutos;
     private javax.swing.JTextField txtCupomAplicado;

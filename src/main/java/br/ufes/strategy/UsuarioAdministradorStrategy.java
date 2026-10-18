@@ -12,6 +12,11 @@ public class UsuarioAdministradorStrategy implements IPerfilUsuarioStrategy{
     }
 
     @Override
+    public boolean podeGerenciarPedidoCliente() {
+        return true;
+    }
+    
+    @Override
     public String perfilUsuario() {
         return "Administrador";
     }

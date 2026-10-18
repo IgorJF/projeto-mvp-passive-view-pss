@@ -10,6 +10,11 @@ public class UsuarioClienteStrategy implements IPerfilUsuarioStrategy{
     public boolean podeGerenciarProdutos() {
         return false;
     }
+    
+    @Override
+    public boolean podeGerenciarPedidoCliente() {
+        return true;
+    }
 
     @Override
     public String perfilUsuario() {

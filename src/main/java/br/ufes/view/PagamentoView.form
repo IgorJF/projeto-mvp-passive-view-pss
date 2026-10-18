@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="3"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblDadosEmail" min="-2" pref="174" max="-2" attributes="0"/>
+                              <EmptySpace min="96" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="lblResumo" min="-2" pref="111" max="-2" attributes="0"/>
+                                  <Component id="lblFormaPagamento" max="32767" attributes="0"/>
+                                  <Component id="rbPixEmail" alignment="0" pref="137" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="rbPixCPF" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="txtCodigoCopiaCola" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btnCopiar" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="txtValorPagar" alignment="1" min="-2" pref="187" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="lblValorPagar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="lblPixEmail" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="txtChavePixEmail" min="-2" pref="188" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="0" pref="24" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="rbCartaoCredito" pref="156" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="398" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblCodigoPix1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblDadosCPF" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="txtCodigoCopiaCola1" max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="btnCopiar1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="txtValorPagar1" alignment="1" min="-2" pref="187" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="1" groupAlignment="1" attributes="0">
+                                          <Component id="lblValorPagar1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="lblPixCPF" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="txtChavePixCPF" min="-2" pref="188" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lblNumeroCartao1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblNumeroCartao" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="txtNumeroCartao" pref="138" max="32767" attributes="0"/>
+                                          <Component id="txtNumeroCartao1" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblValidade" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtValidade" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="lblCVV" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtCVV" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lblCartaoCredito" min="-2" pref="171" max="-2" attributes="0"/>
+                                          <Component id="lblAviso" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="0" pref="33" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Component id="lblFormaPagamento1" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lblNumeroPedido" alignment="0" min="-2" pref="119" max="-2" attributes="0"/>
+                                          <Component id="lblCliente" alignment="0" min="-2" pref="55" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="txtNumeroPedido" min="-2" pref="148" max="-2" attributes="0"/>
+                                          <Component id="cmbCliente" min="-2" pref="320" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblDataPedido" min="-2" pref="119" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtDataPedido" min="-2" pref="148" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jScrollPane1" alignment="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblTaxaEntrega" min="-2" pref="108" max="-2" attributes="0"/>
+                                  <Component id="lblValorItens" min="-2" pref="89" max="-2" attributes="0"/>
+                                  <Component id="lblDescontoPedido" alignment="0" min="-2" pref="123" max="-2" attributes="0"/>
+                                  <Component id="lblTotalPedido" min="-2" pref="151" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtDescontoPedido" max="32767" attributes="0"/>
+                                  <Component id="txtTaxaEntrega" max="32767" attributes="0"/>
+                                  <Component id="txtTotalPedido" pref="163" max="32767" attributes="0"/>
+                                  <Component id="txtValorItens" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblCodigoPix" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblSituacaoPagamento" min="-2" pref="462" max="-2" attributes="0"/>
+                                  <Component id="btnVisualizarPedido" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="lblNumeroPedido1" min="-2" pref="119" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                      <Component id="txtNumeroPedidoFinal" min="-2" pref="148" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="lblStatus" min="-2" pref="119" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                      <Component id="txtStatus" min="-2" pref="148" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblDataHoraPedido" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="txtDataHoraPedido" min="-2" pref="149" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="lblCodigoTransacao" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="txtCodigoTransacao" min="-2" pref="148" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="lblFormaPagamentoUtilizada" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="txtFormaPagamento" min="-2" pref="148" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="btnFinalizarPagamento" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btnFechar" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+              <Component id="lblResumo" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblNumeroPedido" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtNumeroPedido" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblValorItens" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtValorItens" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmbCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblTaxaEntrega" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtTaxaEntrega" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblDataPedido" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtDataPedido" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblDescontoPedido" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtDescontoPedido" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="163" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblTotalPedido" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtTotalPedido" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="lblFormaPagamento" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="rbPixEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="rbPixCPF" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="rbCartaoCredito" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblDadosCPF" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCartaoCredito" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblPixCPF" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtChavePixCPF" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblNumeroCartao" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblValorPagar1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtValorPagar1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblNumeroCartao1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblValidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtValidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCVV" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtCVV" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="lblDadosEmail" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="34" pref="34" max="-2" attributes="0"/>
+                              <Component id="txtNumeroCartao1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="txtNumeroCartao" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="lblCodigoPix1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txtCodigoCopiaCola1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnCopiar1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblAviso" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lblPixEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtChavePixEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lblValorPagar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtValorPagar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="lblCodigoPix" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="txtCodigoCopiaCola" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnCopiar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="lblFormaPagamento1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblSituacaoPagamento" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblNumeroPedido1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtNumeroPedidoFinal" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblFormaPagamentoUtilizada" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtFormaPagamento" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblCodigoTransacao" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtCodigoTransacao" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblDataHoraPedido" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtDataHoraPedido" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="34" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnFinalizarPagamento" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnFechar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnVisualizarPedido" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="lblNumeroPedido">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="N&#xfa;mero do Pedido:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtNumeroPedido">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblCliente">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cliente:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmbCliente">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtDataPedido">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblDataPedido">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Data do Pedido:"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTable" name="tblProdutos">
+          <Properties>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+              <Table columnCount="5" rowCount="0">
+                <Column editable="true" title="Item" type="java.lang.Integer"/>
+                <Column editable="true" title="Produto" type="java.lang.String"/>
+                <Column editable="true" title="Quantidade" type="java.lang.Integer"/>
+                <Column editable="true" title="Pre&#xe7;o Unitario" type="java.lang.Double"/>
+                <Column editable="true" title="Subtotal" type="java.lang.Double"/>
+              </Table>
+            </Property>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JLabel" name="lblValorItens">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Valor dos Itens:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblTaxaEntrega">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Taxa Entrega Final:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblDescontoPedido">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Desconto do Pedido:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtDescontoPedido">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtTaxaEntrega">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtValorItens">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblTotalPedido">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="18" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Total do Pedido:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtTotalPedido">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblResumo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Resumo do Pedido"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblFormaPagamento">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Forma de Pagamento"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="rbPixEmail">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pix - Chave e-mail"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="rbPixCPF">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pix - Chave CPF"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbPixCPFActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="rbCartaoCredito">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cart&#xe3;o de Cr&#xe9;dito"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbCartaoCreditoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblDadosEmail">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dados do Pix - Chave e-mail"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblDadosCPF">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dados do Pix - Chave CPF"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblCartaoCredito">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Dados do Cart&#xe3;o de Cr&#xe9;dito"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblPixEmail">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Chave Pix E-mail:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblValorPagar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Valor a Pagar:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblCodigoPix">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="C&#xf3;digo Pix (Copia e Cola):"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtCodigoCopiaCola">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCodigoCopiaColaActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtValorPagar">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtValorPagarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtChavePixEmail">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtChavePixEmailActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnCopiar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Copiar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblPixCPF">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Chave Pix CPF:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblValorPagar1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Valor a Pagar:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblCodigoPix1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="C&#xf3;digo Pix (Copia e Cola):"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtCodigoCopiaCola1">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCodigoCopiaCola1ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtValorPagar1">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtValorPagar1ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtChavePixCPF">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtChavePixCPFActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnCopiar1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Copiar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblNumeroCartao">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="N&#xfa;mero do Cart&#xe3;o:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtNumeroCartao">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblNumeroCartao1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nome Impresso:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtNumeroCartao1">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblValidade">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Validade:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtValidade">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblCVV">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="CVV:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtCVV">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblAviso">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Parcelamento n&#xe3;o permitido. Apenas &#xe0; vista."/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblFormaPagamento1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Confirma&#xe7;&#xe3;o de Pagamento"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblSituacaoPagamento">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="24" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Pagamento"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblNumeroPedido1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="N&#xfa;mero do Pedido:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtNumeroPedidoFinal">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblStatus">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Status:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtStatus">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblFormaPagamentoUtilizada">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Forma de Pagamento utilizada:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtFormaPagamento">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblCodigoTransacao">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="C&#xf3;digo da Transa&#xe7;&#xe3;o:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtCodigoTransacao">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblDataHoraPedido">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Data e Hora do Pedido:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtDataHoraPedido">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="btnFinalizarPagamento">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Finalizar Pagamento"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="btnFechar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Fechar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFecharActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="btnVisualizarPedido">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Visualizar Pedido"/>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>
