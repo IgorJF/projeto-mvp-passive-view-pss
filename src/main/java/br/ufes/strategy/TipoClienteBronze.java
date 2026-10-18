@@ -15,7 +15,7 @@ public class TipoClienteBronze extends TipoCliente{
 
     @Override
     public void promoverTipoCliente() {
-        if(cliente.getTipoCliente().tipoAtualCliente().equals("Bronze") || cliente.getTotalCompradoHistorico() >= 50){
+        if(cliente.getTipoCliente().tipoAtualCliente().equals("Bronze") && cliente.getTotalCompradoHistorico() >= 50){
             cliente.setTipoCliente(new TipoClientePrata(cliente));
         }
     }

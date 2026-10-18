@@ -1,5 +1,6 @@
 package br.ufes.presenter;
 
+import br.projeto.painelpedidos.repositorio.IPedidoRepository;
 import br.ufes.model.Usuario;
 import br.ufes.repository.ICategoriaRepository;
 import br.ufes.repository.IClienteRepository;
@@ -25,14 +26,16 @@ public class LoginPresenter {
     private IHistoricoPrecoRepository historicoRepository;
     private IClienteRepository clienteRepository;
     private IUsuarioRepository usuarioRepository;
+    private IPedidoRepository pedidoRepository;
 
-    public LoginPresenter(AutenticacaoSenhaUsuarioService autenticacaoUsuarioService, ICategoriaRepository categoriaRepository,  IProdutoRepository produtoRepository, IHistoricoPrecoRepository historicoRepository, IClienteRepository clienteRepository, IUsuarioRepository usuarioRepository){
+    public LoginPresenter(AutenticacaoSenhaUsuarioService autenticacaoUsuarioService, ICategoriaRepository categoriaRepository,  IProdutoRepository produtoRepository, IHistoricoPrecoRepository historicoRepository, IClienteRepository clienteRepository, IUsuarioRepository usuarioRepository, IPedidoRepository pedidoRepository){
         this.autenticacaoUsuarioService = autenticacaoUsuarioService;
         this.categoriaRepository = categoriaRepository;
         this.produtoRepository = produtoRepository;
         this.historicoRepository = historicoRepository;
         this.clienteRepository = clienteRepository;
         this.usuarioRepository = usuarioRepository;
+        this.pedidoRepository = pedidoRepository;
         this.view = new LoginView();
         configuraView();
     }
@@ -75,7 +78,7 @@ public class LoginPresenter {
 
         Usuario usuarioLogado = autenticacaoUsuarioService.autenticarSenhaUsuario(login, senha);
         if (usuarioLogado != null) {
-            new TelaPrincipalPresenter(usuarioLogado, autenticacaoUsuarioService, categoriaRepository, produtoRepository, historicoRepository, clienteRepository, usuarioRepository);
+            new TelaPrincipalPresenter(usuarioLogado, autenticacaoUsuarioService, categoriaRepository, produtoRepository, historicoRepository, clienteRepository, usuarioRepository, pedidoRepository);
             fechar();
         }
     }

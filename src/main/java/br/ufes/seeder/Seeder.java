@@ -1,9 +1,13 @@
 package br.ufes.seeder;
 
+import br.projeto.painelpedidos.repositorio.IPedidoRepository;
+import br.ufes.cupom.APITaxaDescontoMock;
 import br.ufes.model.Categoria;
 import br.ufes.model.Cliente;
 import br.ufes.model.HistoricoPreco;
+import br.ufes.model.Pedido;
 import br.ufes.model.Produto;
+import br.ufes.model.ProdutoPedido;
 import br.ufes.model.Usuario;
 import br.ufes.repository.ICategoriaRepository;
 import br.ufes.repository.IClienteRepository;
@@ -16,6 +20,7 @@ import br.ufes.strategy.UsuarioAtendenteStrategy;
 import br.ufes.strategy.UsuarioClienteStrategy;
 import br.ufes.service.CalculoPrecoService;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Seeder {
     private final ICategoriaRepository categoriaRepository;
@@ -23,13 +28,15 @@ public class Seeder {
     private final IHistoricoPrecoRepository historicoRepository;
     private final IClienteRepository clienteRepository;
     private final IUsuarioRepository usuarioRepository;
+    private final IPedidoRepository pedidoRepository;
     
-    public Seeder(ICategoriaRepository categoriaRepository, IProdutoRepository produtoRepository, IHistoricoPrecoRepository historicoRepository, IClienteRepository clienteRepository, IUsuarioRepository usuarioRepository) {
+    public Seeder(ICategoriaRepository categoriaRepository, IProdutoRepository produtoRepository, IHistoricoPrecoRepository historicoRepository, IClienteRepository clienteRepository, IUsuarioRepository usuarioRepository, IPedidoRepository pedidoRepository) {
         this.categoriaRepository = categoriaRepository;
         this.produtoRepository = produtoRepository;
         this.historicoRepository = historicoRepository;
         this.clienteRepository = clienteRepository;
         this.usuarioRepository = usuarioRepository;
+        this.pedidoRepository = pedidoRepository;
         executar();
     }
 
@@ -38,6 +45,7 @@ public class Seeder {
         criarProdutos();
         criarClientes();
         criarUsuarios();
+        criarPedidos();
     }
 
     private void criarCategorias() {
@@ -133,14 +141,51 @@ public class Seeder {
         usuario("Bruno Lima", "bruno", "bruno@pocdelivery.com", "123456", new UsuarioClienteStrategy(), false, clienteBruno);
     }
 
-    // O método agora recebe o parâmetro clienteAssociado
     private Usuario usuario(String nome, String nomeUsuario, String email, String senha, IPerfilUsuarioStrategy perfil, boolean status, Cliente clienteAssociado) {
         Usuario usuario = new Usuario(nome, nomeUsuario, email, senha, perfil, status);
         usuario.setClienteAssociado(clienteAssociado);
         usuarioRepository.salvar(usuario);
         return usuario;
     }
-    
+
+    private void criarPedidos() {
+        Pedido pedidoNovo = pedido("Ana Souza", LocalDateTime.now().minusMinutes(3), "Livro didático", 1, "Suco de uva 1 L", 2);
+
+        Pedido pedidoEmPreparo = pedido("Bruno Lima", LocalDateTime.now().minusMinutes(18), "Caderno universitário", 2, "Caneta esferográfica azul", 3);
+        pedidoEmPreparo.registrarPagamento("Pix - chave CPF", LocalDateTime.now().minusMinutes(16));
+
+        Pedido pedidoEmRota = pedido("Carlos Mendes", LocalDateTime.now().minusMinutes(45), "Jogo de tabuleiro", 1, "Barra de cereal", 4);
+        pedidoEmRota.registrarPagamento("Cartao de credito a vista", LocalDateTime.now().minusMinutes(43));
+        pedidoEmRota.marcarProntoParaEntrega(LocalDateTime.now().minusMinutes(25));
+        pedidoEmRota.sairParaEntrega(LocalDateTime.now().minusMinutes(10));
+
+        Pedido pedidoCancelado = pedido("Fernanda Costa", LocalDateTime.now().minusMinutes(60), "Fone de ouvido", 1, "Sabonete", 2);
+        pedidoCancelado.registrarPagamento("Pix - chave e-mail", LocalDateTime.now().minusMinutes(58));
+        pedidoCancelado.cancelar(LocalDateTime.now().minusMinutes(30));
+    }
+
+    private Pedido pedido(String nomeCliente, LocalDateTime dataHora, String nomeProduto, int quantidade, String nomeOutroProduto, int outraQuantidade) {
+        Cliente cliente = buscarCliente(nomeCliente);
+        ProdutoPedido item = new ProdutoPedido(buscarProduto(nomeProduto), quantidade);
+        ProdutoPedido outroItem = new ProdutoPedido(buscarProduto(nomeOutroProduto), outraQuantidade);
+        double valorTotal = item.getSubtotal() + outroItem.getSubtotal() + APITaxaDescontoMock.getTaxaEntregaPadrao();
+        Pedido pedido = new Pedido(pedidoRepository.gerarProximoIdentificador(), dataHora, cliente.getNomeCliente(), cliente.getEnderecoCompleto(), valorTotal);
+        pedido.setCliente(cliente);
+        pedido.adicionarProdutoPedido(item);
+        pedido.adicionarProdutoPedido(outroItem);
+        pedidoRepository.salvar(pedido);
+        return pedido;
+    }
+
+    private Produto buscarProduto(String nome) {
+        for (Produto produto : produtoRepository.listar()) {
+            if (produto.getNomeProduto().equalsIgnoreCase(nome)) {
+                return produto;
+            }
+        }
+        throw new IllegalArgumentException("Produto não encontrado: " + nome);
+    }
+
     private Cliente buscarCliente(String nome) {
         for (Cliente cliente : clienteRepository.listar()) {
             if (cliente.getNomeCliente().equalsIgnoreCase(nome)) {

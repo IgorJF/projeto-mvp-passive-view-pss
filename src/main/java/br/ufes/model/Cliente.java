@@ -86,6 +86,10 @@ public class Cliente {
         this.totalCompradoHistorico += valorNovaCompra;
     }
 
+    public String getEnderecoCompleto() {
+        return logradouro + "\nBairro " + bairro + "\n" + cidade + " - " + uf;
+    }
+
     public String toString(){
         return nomeCliente;
     }

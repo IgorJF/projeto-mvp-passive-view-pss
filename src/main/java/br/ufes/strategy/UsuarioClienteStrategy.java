@@ -13,7 +13,7 @@ public class UsuarioClienteStrategy implements IPerfilUsuarioStrategy{
     
     @Override
     public boolean podeGerenciarPedidoCliente() {
-        return true;
+        return false;
     }
 
     @Override

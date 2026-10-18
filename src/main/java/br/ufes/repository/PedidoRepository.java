@@ -14,10 +14,18 @@ public class PedidoRepository implements IPedidoRepository {
         contadorId = 0;
     }
 
+    //o painel chama salvar tanto para incluir um pedido novo quanto para gravar uma mudanca de situacao
+    //por isso um pedido que ja esta na lista eh atualizado no lugar e nao duplicado
     @Override
     public void salvar(PedidoAbstract pedido) {
         if (pedido == null) {
             throw new IllegalArgumentException("Pedido nao pode ser nulo");
+        }
+        for (int posicao = 0; posicao < pedidos.size(); posicao++) {
+            if (pedidos.get(posicao).getIdentificador().equals(pedido.getIdentificador())) {
+                pedidos.set(posicao, pedido);
+                return;
+            }
         }
         pedidos.add(pedido);
     }

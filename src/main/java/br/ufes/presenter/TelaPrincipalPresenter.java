@@ -1,5 +1,7 @@
 package br.ufes.presenter;
 
+import br.projeto.painelpedidos.repositorio.IPedidoRepository;
+import br.ufes.facade.PainelPedidoFacade;
 import br.ufes.model.Usuario;
 import br.ufes.repository.ICategoriaRepository;
 import br.ufes.repository.IClienteRepository;
@@ -13,11 +15,6 @@ import javax.swing.JOptionPane;
 import br.ufes.repository.IHistoricoPrecoRepository;
 import br.ufes.state.InclusaoClienteState;
 
-//a tela principal eh aberta depois de uma autenticacao concluida e inicia maximizada
-//apresenta a identificacao do usuario corrente e disponibiliza apenas as opcoes compatieis com o perfil autenticado
-//a manutencao de usuarios fica indisponivel para quem nao pode gerenciar usuarios
-//sair encerra a sessao corrente e devolve a tela de autenticacao centralizada
-
 public class TelaPrincipalPresenter {
     private TelaPrincipal view;
     private Usuario usuarioLogado;
@@ -27,8 +24,10 @@ public class TelaPrincipalPresenter {
     private IHistoricoPrecoRepository historicoRepository;
     private IClienteRepository clienteRepository;
     private IUsuarioRepository usuarioRepository;
+    private IPedidoRepository pedidoRepository;
+    private PainelPedidoFacade painelPedidoFacade;
 
-    public TelaPrincipalPresenter(Usuario usuarioLogado, AutenticacaoSenhaUsuarioService autenticacaoUsuarioService, ICategoriaRepository categoriaRepository, IProdutoRepository produtoRepository, IHistoricoPrecoRepository historicoRepository, IClienteRepository clienteRepository, IUsuarioRepository usuarioRepository){
+    public TelaPrincipalPresenter(Usuario usuarioLogado, AutenticacaoSenhaUsuarioService autenticacaoUsuarioService, ICategoriaRepository categoriaRepository, IProdutoRepository produtoRepository, IHistoricoPrecoRepository historicoRepository, IClienteRepository clienteRepository, IUsuarioRepository usuarioRepository, IPedidoRepository pedidoRepository){
         this.view = new TelaPrincipal();
         this.usuarioLogado = usuarioLogado;
         this.autenticacaoUsuarioService = autenticacaoUsuarioService;
@@ -37,6 +36,8 @@ public class TelaPrincipalPresenter {
         this.historicoRepository = historicoRepository;
         this.clienteRepository = clienteRepository;
         this.usuarioRepository = usuarioRepository;
+        this.pedidoRepository = pedidoRepository;
+        this.painelPedidoFacade = new PainelPedidoFacade(usuarioLogado, pedidoRepository, clienteRepository, produtoRepository);
         configuraView();
     }
 
@@ -157,6 +158,28 @@ public class TelaPrincipalPresenter {
             }
         });
         
+        view.getBtnNovoPedido().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                try{
+                    abrirPedido();
+                } catch(Exception ex){
+                    JOptionPane.showMessageDialog(view, "Falha: " + ex.getMessage());
+                }
+            }
+        });
+
+        view.getBtnAcompanharEntregas().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                try{
+                    abrirPainelPedidos();
+                } catch(Exception ex){
+                    JOptionPane.showMessageDialog(view, "Falha: " + ex.getMessage());
+                }
+            }
+        });
+
         view.getBtnBuscarClientes().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e){
@@ -188,6 +211,18 @@ public class TelaPrincipalPresenter {
     private void aplicarPermissoes(){
         boolean podeGerenciarUsuarios = usuarioLogado.getPerfil().podeGerenciarUsuarios();
         view.getjMenuUsuarios().setVisible(podeGerenciarUsuarios);
+        view.getBtnAcompanharEntregas().setVisible(usuarioLogado.getPerfil().podeGerenciarPedidoCliente());
+    }
+
+    private void abrirPedido(){
+        new PedidoPresenter(usuarioLogado, pedidoRepository, clienteRepository, produtoRepository, painelPedidoFacade);
+    }
+
+    private void abrirPainelPedidos(){
+        if (!usuarioLogado.getPerfil().podeGerenciarPedidoCliente()) {
+            throw new IllegalArgumentException("O acompanhamento de pedidos esta disponivel apenas para o Atendente e o Administrador.");
+        }
+        painelPedidoFacade.iniciar();
     }
 
     private void abrirCategorias(){
@@ -210,7 +245,8 @@ public class TelaPrincipalPresenter {
     }
 
     private void sair(){
+        painelPedidoFacade.encerrar();
         view.dispose();
-        new LoginPresenter(autenticacaoUsuarioService, categoriaRepository, produtoRepository, historicoRepository, clienteRepository, usuarioRepository);
+        new LoginPresenter(autenticacaoUsuarioService, categoriaRepository, produtoRepository, historicoRepository, clienteRepository, usuarioRepository, pedidoRepository);
     }
 }

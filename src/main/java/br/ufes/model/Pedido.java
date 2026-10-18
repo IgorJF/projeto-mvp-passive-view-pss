@@ -15,6 +15,7 @@ public class Pedido extends PedidoAbstract{
     private List<CupomDescontoEntrega> cuponsTaxaEntrega = new ArrayList<>();
     private CupomDescontoPedido cupomDescontoPedido;
     private double valorDescontoPedido;
+    private Pagamento pagamento;
 
     public Pedido(String identificador, LocalDateTime dataHora, String nomeCliente, String enderecoEntrega, double valorTotal){
         super(identificador, dataHora, nomeCliente, enderecoEntrega, valorTotal);
@@ -111,6 +112,14 @@ public class Pedido extends PedidoAbstract{
 
     public double getValorFinalPedido(){
         return getValorPedidoComDesconto() - getDescontoTaxaEntrega();
+    }
+
+    public Pagamento getPagamento(){
+        return pagamento;
+    }
+
+    public void setPagamento(Pagamento pagamento){
+        this.pagamento = pagamento;
     }
 
 }

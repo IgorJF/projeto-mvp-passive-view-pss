@@ -14,6 +14,7 @@ public class FormaDescontoTaxaPorTipoCliente implements IFormaDescontoTaxaEntreg
 
     public FormaDescontoTaxaPorTipoCliente() {
         descontosPorTipoCliente = new HashMap<>();
+        descontosPorTipoCliente.put("Diamante", 4.00);
         descontosPorTipoCliente.put("Ouro", 3.00);
         descontosPorTipoCliente.put("Prata", 2.00);
         descontosPorTipoCliente.put("Bronze", 1.00);
