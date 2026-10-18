@@ -11,6 +11,7 @@ public abstract class TipoCliente {
     
     public abstract String tipoAtualCliente();
     
+    //mudar as regras de promover e desmoprover quando implementar pedido
     public void promoverTipoCliente(){
         throw  new IllegalArgumentException("Nao a como promover clientes nesse nivel");
     }
