@@ -63,7 +63,7 @@ public class PedidoView extends javax.swing.JFrame {
         btnRemoverCupom = new javax.swing.JButton();
         txtCupomAplicado = new javax.swing.JTextField();
         lblTotalPedido = new javax.swing.JLabel();
-        jTotalPedido = new javax.swing.JTextField();
+        txtTotalPedido = new javax.swing.JTextField();
         btnCalcularValor = new javax.swing.JButton();
         btnPagarPedido = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
@@ -145,8 +145,8 @@ public class PedidoView extends javax.swing.JFrame {
         lblTotalPedido.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTotalPedido.setText("Total Pedido:");
 
-        jTotalPedido.setEditable(false);
-        jTotalPedido.addActionListener(this::jTotalPedidoActionPerformed);
+        txtTotalPedido.setEditable(false);
+        txtTotalPedido.addActionListener(this::txtTotalPedidoActionPerformed);
 
         btnCalcularValor.setText("Calcular Valor Pedido");
 
@@ -234,7 +234,7 @@ public class PedidoView extends javax.swing.JFrame {
                                     .addComponent(btnDetalhes, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(lblTotalPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTotalPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtTotalPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnCalcularValor))
                             .addGroup(layout.createSequentialGroup()
@@ -310,7 +310,7 @@ public class PedidoView extends javax.swing.JFrame {
                 .addComponent(lblTotalPedido)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTotalPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTotalPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCalcularValor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -322,9 +322,9 @@ public class PedidoView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTotalPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTotalPedidoActionPerformed
+    private void txtTotalPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalPedidoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTotalPedidoActionPerformed
+    }//GEN-LAST:event_txtTotalPedidoActionPerformed
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
         // TODO add your handling code here:
@@ -405,9 +405,12 @@ public class PedidoView extends javax.swing.JFrame {
     public JTextField getTxtValorPedido() {
         return txtValorPedido;
     }
-    
-    
 
+    public JTextField getTxtTotalPedido() {
+        return txtTotalPedido;
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdicionar;
     private javax.swing.JButton btnAplicarCupom;
@@ -420,7 +423,6 @@ public class PedidoView extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbProdutos;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTotalPedido;
     private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblCupomDesconto;
     private javax.swing.JLabel lblDados;
@@ -445,6 +447,7 @@ public class PedidoView extends javax.swing.JFrame {
     private javax.swing.JTextField txtNumeroPedido;
     private javax.swing.JTextField txtTaxaEntrega;
     private javax.swing.JTextField txtTaxaEntregaFinal;
+    private javax.swing.JTextField txtTotalPedido;
     private javax.swing.JTextField txtValorPedido;
     // End of variables declaration//GEN-END:variables
 }

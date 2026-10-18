@@ -90,9 +90,9 @@ public class PagamentoView extends javax.swing.JFrame {
         txtCodigoTransacao = new javax.swing.JTextField();
         lblDataHoraPedido = new javax.swing.JLabel();
         txtDataHoraPedido = new javax.swing.JTextField();
-        btnFinalizarPagamento = new javax.swing.JTextField();
-        btnFechar = new javax.swing.JTextField();
-        btnVisualizarPedido = new javax.swing.JTextField();
+        btnFinalizarPagamento = new javax.swing.JButton();
+        btnFechar = new javax.swing.JButton();
+        btnVisualizarPedido = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -231,7 +231,6 @@ public class PagamentoView extends javax.swing.JFrame {
         btnFinalizarPagamento.setText("Finalizar Pagamento");
 
         btnFechar.setText("Fechar");
-        btnFechar.addActionListener(this::btnFecharActionPerformed);
 
         btnVisualizarPedido.setText("Visualizar Pedido");
 
@@ -351,34 +350,34 @@ public class PagamentoView extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblSituacaoPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 462, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnVisualizarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnVisualizarPedido))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblNumeroPedido1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(54, 54, 54)
-                                        .addComponent(txtNumeroPedidoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(54, 54, 54)
-                                        .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblDataHoraPedido)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtDataHoraPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(btnFinalizarPagamento)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnFechar))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addGroup(layout.createSequentialGroup()
+                                            .addComponent(lblNumeroPedido1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(54, 54, 54)
+                                            .addComponent(txtNumeroPedidoFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(lblStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(54, 54, 54)
+                                            .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(lblDataHoraPedido)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(txtDataHoraPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                             .addComponent(lblCodigoTransacao)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(txtCodigoTransacao, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                             .addComponent(lblFormaPagamentoUtilizada)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txtFormaPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnFinalizarPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnFechar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addComponent(txtFormaPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -495,11 +494,11 @@ public class PagamentoView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDataHoraPedido)
                     .addComponent(txtDataHoraPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnFinalizarPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFechar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVisualizarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnFinalizarPagamento)
+                    .addComponent(btnFechar)
+                    .addComponent(btnVisualizarPedido))
                 .addContainerGap())
         );
 
@@ -538,28 +537,12 @@ public class PagamentoView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtChavePixCPFActionPerformed
 
-    private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnFecharActionPerformed
-
     public JButton getBtnCopiar() {
         return btnCopiar;
     }
 
     public JButton getBtnCopiar1() {
         return btnCopiar1;
-    }
-
-    public JTextField getBtnFechar() {
-        return btnFechar;
-    }
-
-    public JTextField getBtnFinalizarPagamento() {
-        return btnFinalizarPagamento;
-    }
-
-    public JTextField getBtnVisualizarPedido() {
-        return btnVisualizarPedido;
     }
 
     public JComboBox<String> getCmbCliente() {
@@ -674,12 +657,26 @@ public class PagamentoView extends javax.swing.JFrame {
         this.lblSituacaoPagamento = lblSituacaoPagamento;
     }
 
+    public JButton getBtnFechar() {
+        return btnFechar;
+    }
+
+    public JButton getBtnFinalizarPagamento() {
+        return btnFinalizarPagamento;
+    }
+
+    public JButton getBtnVisualizarPedido() {
+        return btnVisualizarPedido;
+    }
+    
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCopiar;
     private javax.swing.JButton btnCopiar1;
-    private javax.swing.JTextField btnFechar;
-    private javax.swing.JTextField btnFinalizarPagamento;
-    private javax.swing.JTextField btnVisualizarPedido;
+    private javax.swing.JButton btnFechar;
+    private javax.swing.JButton btnFinalizarPagamento;
+    private javax.swing.JButton btnVisualizarPedido;
     private javax.swing.JComboBox<String> cmbCliente;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAviso;
